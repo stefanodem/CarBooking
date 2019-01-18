@@ -8,24 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		3D4A7AB821F1DA8600DD80B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AB721F1DA8600DD80B9 /* AppDelegate.swift */; };
-		3D4A7ABA21F1DA8600DD80B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AB921F1DA8600DD80B9 /* ViewController.swift */; };
 		3D4A7ABD21F1DA8600DD80B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7ABB21F1DA8600DD80B9 /* Main.storyboard */; };
 		3D4A7ABF21F1DA8700DD80B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */; };
 		3D4A7AC221F1DA8700DD80B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */; };
+		3D4A7AE621F1DEED00DD80B9 /* CarBookingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AE521F1DEED00DD80B9 /* CarBookingTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D4A7AE821F1DEED00DD80B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D4A7AAC21F1DA8600DD80B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D4A7AB321F1DA8600DD80B9;
+			remoteInfo = CarBooking;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3D4A7AB421F1DA8600DD80B9 /* CarBooking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarBooking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D4A7AB721F1DA8600DD80B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D4A7AB921F1DA8600DD80B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D4A7ABC21F1DA8600DD80B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D4A7AC121F1DA8700DD80B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D4A7AC321F1DA8700DD80B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D4A7AE321F1DEED00DD80B9 /* CarBookingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarBookingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D4A7AE521F1DEED00DD80B9 /* CarBookingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBookingTests.swift; sourceTree = "<group>"; };
+		3D4A7AE721F1DEED00DD80B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3D4A7AB121F1DA8600DD80B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D4A7AE021F1DEED00DD80B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				3D4A7AB621F1DA8600DD80B9 /* CarBooking */,
+				3D4A7AE421F1DEED00DD80B9 /* CarBookingTests */,
 				3D4A7AB521F1DA8600DD80B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				3D4A7AB421F1DA8600DD80B9 /* CarBooking.app */,
+				3D4A7AE321F1DEED00DD80B9 /* CarBookingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,14 +75,70 @@
 		3D4A7AB621F1DA8600DD80B9 /* CarBooking */ = {
 			isa = PBXGroup;
 			children = (
+				3D4A7AEF21F1E4E100DD80B9 /* Service */,
+				3D4A7AED21F1E29100DD80B9 /* Model */,
+				3D4A7AEE21F1E29C00DD80B9 /* View */,
+				3D4A7ACB21F1DCDE00DD80B9 /* Controller */,
+				3D4A7ACA21F1DCD300DD80B9 /* CoreData */,
+				3D4A7AC921F1DC0C00DD80B9 /* Resources */,
+			);
+			path = CarBooking;
+			sourceTree = "<group>";
+		};
+		3D4A7AC921F1DC0C00DD80B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				3D4A7AB721F1DA8600DD80B9 /* AppDelegate.swift */,
-				3D4A7AB921F1DA8600DD80B9 /* ViewController.swift */,
 				3D4A7ABB21F1DA8600DD80B9 /* Main.storyboard */,
 				3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */,
 				3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */,
 				3D4A7AC321F1DA8700DD80B9 /* Info.plist */,
 			);
-			path = CarBooking;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3D4A7ACA21F1DCD300DD80B9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3D4A7ACB21F1DCDE00DD80B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3D4A7AE421F1DEED00DD80B9 /* CarBookingTests */ = {
+			isa = PBXGroup;
+			children = (
+				3D4A7AE521F1DEED00DD80B9 /* CarBookingTests.swift */,
+				3D4A7AE721F1DEED00DD80B9 /* Info.plist */,
+			);
+			path = CarBookingTests;
+			sourceTree = "<group>";
+		};
+		3D4A7AED21F1E29100DD80B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3D4A7AEE21F1E29C00DD80B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D4A7AEF21F1E4E100DD80B9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +161,24 @@
 			productReference = 3D4A7AB421F1DA8600DD80B9 /* CarBooking.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3D4A7AE221F1DEED00DD80B9 /* CarBookingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D4A7AEA21F1DEED00DD80B9 /* Build configuration list for PBXNativeTarget "CarBookingTests" */;
+			buildPhases = (
+				3D4A7ADF21F1DEED00DD80B9 /* Sources */,
+				3D4A7AE021F1DEED00DD80B9 /* Frameworks */,
+				3D4A7AE121F1DEED00DD80B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D4A7AE921F1DEED00DD80B9 /* PBXTargetDependency */,
+			);
+			name = CarBookingTests;
+			productName = CarBookingTests;
+			productReference = 3D4A7AE321F1DEED00DD80B9 /* CarBookingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +191,10 @@
 				TargetAttributes = {
 					3D4A7AB321F1DA8600DD80B9 = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					3D4A7AE221F1DEED00DD80B9 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 3D4A7AB321F1DA8600DD80B9;
 					};
 				};
 			};
@@ -113,6 +212,7 @@
 			projectRoot = "";
 			targets = (
 				3D4A7AB321F1DA8600DD80B9 /* CarBooking */,
+				3D4A7AE221F1DEED00DD80B9 /* CarBookingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +228,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3D4A7AE121F1DEED00DD80B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -135,12 +242,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D4A7ABA21F1DA8600DD80B9 /* ViewController.swift in Sources */,
 				3D4A7AB821F1DA8600DD80B9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3D4A7ADF21F1DEED00DD80B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D4A7AE621F1DEED00DD80B9 /* CarBookingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D4A7AE921F1DEED00DD80B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D4A7AB321F1DA8600DD80B9 /* CarBooking */;
+			targetProxy = 3D4A7AE821F1DEED00DD80B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3D4A7ABB21F1DA8600DD80B9 /* Main.storyboard */ = {
@@ -213,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -268,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,7 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84BULQXU2Q;
-				INFOPLIST_FILE = CarBooking/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CarBooking/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,7 +425,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84BULQXU2Q;
-				INFOPLIST_FILE = CarBooking/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CarBooking/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -313,6 +435,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3D4A7AEB21F1DEED00DD80B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84BULQXU2Q;
+				INFOPLIST_FILE = CarBookingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefano.CarBookingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarBooking.app/CarBooking";
+			};
+			name = Debug;
+		};
+		3D4A7AEC21F1DEED00DD80B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84BULQXU2Q;
+				INFOPLIST_FILE = CarBookingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefano.CarBookingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarBooking.app/CarBooking";
 			};
 			name = Release;
 		};
@@ -333,6 +497,15 @@
 			buildConfigurations = (
 				3D4A7AC721F1DA8700DD80B9 /* Debug */,
 				3D4A7AC821F1DA8700DD80B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D4A7AEA21F1DEED00DD80B9 /* Build configuration list for PBXNativeTarget "CarBookingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D4A7AEB21F1DEED00DD80B9 /* Debug */,
+				3D4A7AEC21F1DEED00DD80B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
