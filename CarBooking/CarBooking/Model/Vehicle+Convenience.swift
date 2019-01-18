@@ -24,4 +24,13 @@ extension Vehicle {
         self.image = image
     }
     
+    /// An initializer that initializes a Vehicle model from a parsed JSON object.
+    convenience init?(vehicleRepresentation: VehicleRepresentation, context: NSManagedObjectContext) {
+        self.init(identifier: vehicleRepresentation.identifier,
+                  name: vehicleRepresentation.name,
+                  shortDescript: vehicleRepresentation.shortDescript,
+                  descript: vehicleRepresentation.descript,
+                  image: vehicleRepresentation.image)
+    }
+    
 }

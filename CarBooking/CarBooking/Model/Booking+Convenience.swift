@@ -22,6 +22,7 @@ extension Booking {
         self.endDate = endDate
     }
     // TODO: Move to helper class
+    /// The default date set to next day at 9am
     var defaultStartDate: Date {
         let calendar = Calendar.current
         let defaultStartTime = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date())!
