@@ -12,6 +12,10 @@
 		3D4A7ABF21F1DA8700DD80B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */; };
 		3D4A7AC221F1DA8700DD80B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */; };
 		3D4A7AE621F1DEED00DD80B9 /* CarBookingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AE521F1DEED00DD80B9 /* CarBookingTests.swift */; };
+		3D4A7AF221F1E58800DD80B9 /* Vehicle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AF021F1E58800DD80B9 /* Vehicle.xcdatamodeld */; };
+		3D4A7AF421F1E5C000DD80B9 /* Vehicle+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AF321F1E5C000DD80B9 /* Vehicle+Convenience.swift */; };
+		3D4A7AF621F1E7A300DD80B9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AF521F1E7A300DD80B9 /* CoreDataStack.swift */; };
+		3D4A7AF821F1EDBD00DD80B9 /* Booking+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AF721F1EDBD00DD80B9 /* Booking+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,10 @@
 		3D4A7AE321F1DEED00DD80B9 /* CarBookingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarBookingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D4A7AE521F1DEED00DD80B9 /* CarBookingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBookingTests.swift; sourceTree = "<group>"; };
 		3D4A7AE721F1DEED00DD80B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D4A7AF121F1E58800DD80B9 /* Vehicle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vehicle.xcdatamodel; sourceTree = "<group>"; };
+		3D4A7AF321F1E5C000DD80B9 /* Vehicle+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vehicle+Convenience.swift"; sourceTree = "<group>"; };
+		3D4A7AF521F1E7A300DD80B9 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		3D4A7AF721F1EDBD00DD80B9 /* Booking+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Booking+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 		3D4A7ACA21F1DCD300DD80B9 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				3D4A7AF521F1E7A300DD80B9 /* CoreDataStack.swift */,
+				3D4A7AF021F1E58800DD80B9 /* Vehicle.xcdatamodeld */,
+				3D4A7AF321F1E5C000DD80B9 /* Vehicle+Convenience.swift */,
+				3D4A7AF721F1EDBD00DD80B9 /* Booking+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -242,7 +254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D4A7AF421F1E5C000DD80B9 /* Vehicle+Convenience.swift in Sources */,
+				3D4A7AF221F1E58800DD80B9 /* Vehicle.xcdatamodeld in Sources */,
 				3D4A7AB821F1DA8600DD80B9 /* AppDelegate.swift in Sources */,
+				3D4A7AF821F1EDBD00DD80B9 /* Booking+Convenience.swift in Sources */,
+				3D4A7AF621F1E7A300DD80B9 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +527,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3D4A7AF021F1E58800DD80B9 /* Vehicle.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3D4A7AF121F1E58800DD80B9 /* Vehicle.xcdatamodel */,
+			);
+			currentVersion = 3D4A7AF121F1E58800DD80B9 /* Vehicle.xcdatamodel */;
+			path = Vehicle.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3D4A7AAC21F1DA8600DD80B9 /* Project object */;
 }
