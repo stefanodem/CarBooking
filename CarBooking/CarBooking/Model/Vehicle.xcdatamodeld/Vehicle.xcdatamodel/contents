@@ -7,15 +7,15 @@
         <relationship name="vehicle" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="bookings" inverseEntity="Vehicle" syncable="YES"/>
     </entity>
     <entity name="Vehicle" representedClassName="Vehicle" syncable="YES" codeGenerationType="class">
-        <attribute name="descript" attributeType="String" syncable="YES"/>
+        <attribute name="descript" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="image" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="shortDescript" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="bookings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Booking" inverseName="vehicle" inverseEntity="Booking" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Vehicle" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Booking" positionX="-54" positionY="27" width="128" height="105"/>
+        <element name="Vehicle" positionX="-63" positionY="-18" width="128" height="30"/>
     </elements>
 </model>

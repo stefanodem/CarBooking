@@ -17,10 +17,11 @@
 		3D4A7AF621F1E7A300DD80B9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AF521F1E7A300DD80B9 /* CoreDataStack.swift */; };
 		3D4A7AF821F1EDBD00DD80B9 /* Booking+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AF721F1EDBD00DD80B9 /* Booking+Convenience.swift */; };
 		3D4A7AFC21F1F58D00DD80B9 /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AFB21F1F58D00DD80B9 /* NetworkDataLoader.swift */; };
-		3D4A7B0121F1FA8D00DD80B9 /* APIBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B0021F1FA8D00DD80B9 /* APIBaseService.swift */; };
-		3D4A7B0521F1FB8B00DD80B9 /* APIVehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B0421F1FB8B00DD80B9 /* APIVehicleService.swift */; };
 		3D4A7B0721F202BA00DD80B9 /* VehicleRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B0621F202BA00DD80B9 /* VehicleRepresentation.swift */; };
 		3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */; };
+		3D4A7B3721F4ADC000DD80B9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3621F4ADC000DD80B9 /* NetworkService.swift */; };
+		3D4A7B3921F4AE2D00DD80B9 /* VehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3821F4AE2D00DD80B9 /* VehicleController.swift */; };
+		3D4A7B3B21F4B06400DD80B9 /* BookingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3A21F4B06400DD80B9 /* BookingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,10 +49,11 @@
 		3D4A7AF521F1E7A300DD80B9 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3D4A7AF721F1EDBD00DD80B9 /* Booking+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Booking+Convenience.swift"; sourceTree = "<group>"; };
 		3D4A7AFB21F1F58D00DD80B9 /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
-		3D4A7B0021F1FA8D00DD80B9 /* APIBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseService.swift; sourceTree = "<group>"; };
-		3D4A7B0421F1FB8B00DD80B9 /* APIVehicleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVehicleService.swift; sourceTree = "<group>"; };
 		3D4A7B0621F202BA00DD80B9 /* VehicleRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRepresentation.swift; sourceTree = "<group>"; };
 		3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3D4A7B3621F4ADC000DD80B9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3D4A7B3821F4AE2D00DD80B9 /* VehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleController.swift; sourceTree = "<group>"; };
+		3D4A7B3A21F4B06400DD80B9 /* BookingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,8 +157,9 @@
 		3D4A7AEF21F1E4E100DD80B9 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3D4A7B0421F1FB8B00DD80B9 /* APIVehicleService.swift */,
-				3D4A7B0021F1FA8D00DD80B9 /* APIBaseService.swift */,
+				3D4A7B3A21F4B06400DD80B9 /* BookingController.swift */,
+				3D4A7B3821F4AE2D00DD80B9 /* VehicleController.swift */,
+				3D4A7B3621F4ADC000DD80B9 /* NetworkService.swift */,
 				3D4A7AFB21F1F58D00DD80B9 /* NetworkDataLoader.swift */,
 			);
 			path = Service;
@@ -285,13 +288,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D4A7B3721F4ADC000DD80B9 /* NetworkService.swift in Sources */,
+				3D4A7B3B21F4B06400DD80B9 /* BookingController.swift in Sources */,
 				3D4A7AF421F1E5C000DD80B9 /* Vehicle+Convenience.swift in Sources */,
 				3D4A7AF221F1E58800DD80B9 /* Vehicle.xcdatamodeld in Sources */,
 				3D4A7B0721F202BA00DD80B9 /* VehicleRepresentation.swift in Sources */,
-				3D4A7B0521F1FB8B00DD80B9 /* APIVehicleService.swift in Sources */,
 				3D4A7AB821F1DA8600DD80B9 /* AppDelegate.swift in Sources */,
+				3D4A7B3921F4AE2D00DD80B9 /* VehicleController.swift in Sources */,
 				3D4A7AF821F1EDBD00DD80B9 /* Booking+Convenience.swift in Sources */,
-				3D4A7B0121F1FA8D00DD80B9 /* APIBaseService.swift in Sources */,
 				3D4A7AF621F1E7A300DD80B9 /* CoreDataStack.swift in Sources */,
 				3D4A7AFC21F1F58D00DD80B9 /* NetworkDataLoader.swift in Sources */,
 				3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */,

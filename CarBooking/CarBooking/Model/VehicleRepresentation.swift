@@ -17,8 +17,8 @@ struct VehicleRepresentation: Codable {
     let identifier: Int16
     let name: String
     let shortDescript: String?
-    let descript: String
-    let image: String
+    let descript: String?
+    let image: String?
     
     enum CodingKeys: String, CodingKey {
         case identifier = "id"

@@ -16,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // Instantiate Client to be injected into root VC
-        // Setup root VC
+        window = UIWindow()
+        window?.makeKeyAndVisible()
+//        let navController = UINavigationController(rootViewController: )
+//        navController.navigationBar.isHidden = true
+//        window?.rootViewController = navController
         
         return true
     }

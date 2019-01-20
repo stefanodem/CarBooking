@@ -1,20 +1,26 @@
 //
-//  APIBaseService.swift
+//  NetworkService.swift
 //  CarBooking
 //
-//  Created by De MicheliStefano on 18.01.19.
+//  Created by De MicheliStefano on 20.01.19.
 //  Copyright © 2019 De MicheliStefano. All rights reserved.
 //
 
 import Foundation
 
-/// A generic response type for handling network responses.
+/**
+ A generic response type for handling network responses.
+ */
+
 enum Response<Value> {
     case success(Value)
     case error(Error)
 }
 
-/// An HTTP method type for type-safe http method configurations.
+/**
+ An HTTP method type for type-safe http method configurations.
+ */
+
 enum HTTPMethod: String {
     case post = "POST"
     case put = "PUT"
@@ -23,10 +29,10 @@ enum HTTPMethod: String {
 }
 
 /**
- A generic API base service for performing network calls.
+ A generic network service for performing network calls.
  */
 
-class APIBaseService {
+class NetworkService {
     
     // MARK: - Properties & init
     
@@ -114,7 +120,7 @@ class APIBaseService {
                 }
             }
             completion(Response.success("Success"))
-        }.resume()
+            }.resume()
     }
     
     func post<Resource: Codable>(with url: URL, requestBody: Dictionary<String, Any>, using session: URLSession = URLSession.shared, completion: @escaping ((Response<Resource>) -> ())) {
@@ -127,7 +133,7 @@ class APIBaseService {
             let requestBody = requestBody
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
-            let jsonData = try JSONSerialization.data(withJSONObject: requestBody, options: .prettyPrinted) //encoder.encode(requestBody)
+            let jsonData = try JSONSerialization.data(withJSONObject: requestBody, options: .prettyPrinted)
             urlRequest.httpBody = jsonData
         } catch {
             NSLog("Failed to encode foods: \(error)")
@@ -165,7 +171,7 @@ class APIBaseService {
                 completion(Response.error(error))
                 return
             }
-        }.resume()
+            }.resume()
     }
     
     func delete(with url: URL, using session: URLSession = URLSession.shared, completion: @escaping ((Response<String>) -> ())) {
@@ -189,7 +195,7 @@ class APIBaseService {
                 }
             }
             completion(Response.success("Success"))
-        }.resume()
+            }.resume()
     }
     
 }

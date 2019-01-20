@@ -15,7 +15,7 @@ import CoreData
 
 extension Vehicle {
     
-    convenience init(identifier: Int16, name: String, shortDescript: String?, descript: String, image: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(identifier: Int16, name: String, shortDescript: String? = nil, descript: String? = nil, image: String? = nil, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.identifier = identifier
         self.name = name
