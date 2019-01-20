@@ -39,9 +39,10 @@ class APIBaseService {
     
     // MARK: - Generic network requests
     
-    func url(with baseUrl: URL, pathComponents: [String]) -> URL {
+    func url(with baseUrl: URL, pathComponents: [String], pathExtension: String? = nil) -> URL {
         var url = baseUrl
         pathComponents.forEach { url.appendPathComponent($0) }
+        if let pathExtension = pathExtension { url.appendPathExtension(pathExtension) }
         return url
     }
     

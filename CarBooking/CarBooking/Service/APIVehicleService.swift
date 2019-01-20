@@ -19,7 +19,7 @@ class APIVehicleService: APIBaseService {
     
     // MARK: - Network requests
     func fetchVehicles(completion: @escaping (Response<VehicleRepresentation>) -> ()) {
-        let url = self.url(with: baseUrl, pathComponents: ["cars"])
+        let url = self.url(with: baseUrl, pathComponents: ["cars"], pathExtension: "json")
         fetch(from: url, completion: completion)
     }
     

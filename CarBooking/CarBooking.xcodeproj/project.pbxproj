@@ -20,6 +20,7 @@
 		3D4A7B0121F1FA8D00DD80B9 /* APIBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B0021F1FA8D00DD80B9 /* APIBaseService.swift */; };
 		3D4A7B0521F1FB8B00DD80B9 /* APIVehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B0421F1FB8B00DD80B9 /* APIVehicleService.swift */; };
 		3D4A7B0721F202BA00DD80B9 /* VehicleRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B0621F202BA00DD80B9 /* VehicleRepresentation.swift */; };
+		3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		3D4A7B0021F1FA8D00DD80B9 /* APIBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseService.swift; sourceTree = "<group>"; };
 		3D4A7B0421F1FB8B00DD80B9 /* APIVehicleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVehicleService.swift; sourceTree = "<group>"; };
 		3D4A7B0621F202BA00DD80B9 /* VehicleRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRepresentation.swift; sourceTree = "<group>"; };
+		3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				3D4A7AED21F1E29100DD80B9 /* Model */,
 				3D4A7AEE21F1E29C00DD80B9 /* View */,
 				3D4A7ACB21F1DCDE00DD80B9 /* Controller */,
+				3D4A7B3021F48F2100DD80B9 /* Utils */,
 				3D4A7AC921F1DC0C00DD80B9 /* Resources */,
 			);
 			path = CarBooking;
@@ -171,6 +174,14 @@
 			children = (
 			);
 			path = Bookings;
+			sourceTree = "<group>";
+		};
+		3D4A7B3021F48F2100DD80B9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +294,7 @@
 				3D4A7B0121F1FA8D00DD80B9 /* APIBaseService.swift in Sources */,
 				3D4A7AF621F1E7A300DD80B9 /* CoreDataStack.swift in Sources */,
 				3D4A7AFC21F1F58D00DD80B9 /* NetworkDataLoader.swift in Sources */,
+				3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
