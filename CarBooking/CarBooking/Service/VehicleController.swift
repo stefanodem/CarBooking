@@ -23,12 +23,12 @@ class VehicleController {
     }
     
     // MARK: - Public
-    func load(completion: @escaping (Response<VehicleRepresentation>) -> ()) {
+    func load(completion: @escaping (Response<[VehicleRepresentation]>) -> ()) {
         let url = networkService.url(pathComponents: ["cars"], pathExtension: "json")
         networkService.fetch(from: url, completion: completion)
     }
     
-    func loadDetail(for vehicleId: Int16, completion: @escaping (Response<VehicleRepresentation>) -> ()) {
+    func loadDetail(for vehicleId: Int16, completion: @escaping (Response<[VehicleRepresentation]>) -> ()) {
         let url = networkService.url(pathComponents: ["cars", String(vehicleId)], pathExtension: "json")
         networkService.fetch(from: url, completion: completion)
     }

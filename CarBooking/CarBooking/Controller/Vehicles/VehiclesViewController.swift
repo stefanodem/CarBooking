@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VehiclesTableViewController: UIViewController {
+class VehiclesViewController: UIViewController {
 
     // MARK: - Properties
     var detailViewController: VehicleDetailViewController? // TODO: Weak?

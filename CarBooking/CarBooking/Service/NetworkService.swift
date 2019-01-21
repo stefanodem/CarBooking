@@ -39,7 +39,6 @@ class NetworkService {
     /// A network loader property that provides ability for independency injection.
     let networkLoader: NetworkDataLoader
     let baseUrl: URL
-//    let baseUrl = URL(string: "http://job-applicants-dummy-api.kupferwerk.net.s3.amazonaws.com/api/")!
     
     init(networkLoader: NetworkDataLoader = URLSession.shared, baseUrl: URL) {
         self.networkLoader = networkLoader

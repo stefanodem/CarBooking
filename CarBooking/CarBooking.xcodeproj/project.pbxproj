@@ -21,8 +21,12 @@
 		3D4A7B3721F4ADC000DD80B9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3621F4ADC000DD80B9 /* NetworkService.swift */; };
 		3D4A7B3921F4AE2D00DD80B9 /* VehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3821F4AE2D00DD80B9 /* VehicleController.swift */; };
 		3D4A7B3B21F4B06400DD80B9 /* BookingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3A21F4B06400DD80B9 /* BookingController.swift */; };
-		3D4A7B4521F5EC7B00DD80B9 /* VehiclesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4421F5EC7B00DD80B9 /* VehiclesTableViewController.swift */; };
+		3D4A7B4521F5EC7B00DD80B9 /* VehiclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4421F5EC7B00DD80B9 /* VehiclesViewController.swift */; };
 		3D4A7B4721F5EC9400DD80B9 /* VehicleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4621F5EC9400DD80B9 /* VehicleDetailViewController.swift */; };
+		3D4A7B4921F6181800DD80B9 /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4821F6181800DD80B9 /* GenericTableViewController.swift */; };
+		3D4A7B4B21F61B6F00DD80B9 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4A21F61B6F00DD80B9 /* UIView+AutoLayout.swift */; };
+		3D4A7B4D21F620F300DD80B9 /* UIViewController+Containment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4C21F620F300DD80B9 /* UIViewController+Containment.swift */; };
+		3D4A7B4F21F626F300DD80B9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4E21F626F300DD80B9 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +58,12 @@
 		3D4A7B3621F4ADC000DD80B9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3D4A7B3821F4AE2D00DD80B9 /* VehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleController.swift; sourceTree = "<group>"; };
 		3D4A7B3A21F4B06400DD80B9 /* BookingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingController.swift; sourceTree = "<group>"; };
-		3D4A7B4421F5EC7B00DD80B9 /* VehiclesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesTableViewController.swift; sourceTree = "<group>"; };
+		3D4A7B4421F5EC7B00DD80B9 /* VehiclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewController.swift; sourceTree = "<group>"; };
 		3D4A7B4621F5EC9400DD80B9 /* VehicleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailViewController.swift; sourceTree = "<group>"; };
+		3D4A7B4821F6181800DD80B9 /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
+		3D4A7B4A21F61B6F00DD80B9 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		3D4A7B4C21F620F300DD80B9 /* UIViewController+Containment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Containment.swift"; sourceTree = "<group>"; };
+		3D4A7B4E21F626F300DD80B9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +178,7 @@
 		3D4A7AF921F1F4DD00DD80B9 /* Vehicles */ = {
 			isa = PBXGroup;
 			children = (
-				3D4A7B4421F5EC7B00DD80B9 /* VehiclesTableViewController.swift */,
+				3D4A7B4421F5EC7B00DD80B9 /* VehiclesViewController.swift */,
 				3D4A7B4621F5EC9400DD80B9 /* VehicleDetailViewController.swift */,
 			);
 			path = Vehicles;
@@ -186,7 +194,10 @@
 		3D4A7B3021F48F2100DD80B9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3D4A7B4E21F626F300DD80B9 /* Constants.swift */,
 				3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */,
+				3D4A7B4A21F61B6F00DD80B9 /* UIView+AutoLayout.swift */,
+				3D4A7B4C21F620F300DD80B9 /* UIViewController+Containment.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -194,6 +205,7 @@
 		3D4A7B3C21F4D4DC00DD80B9 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3D4A7B4821F6181800DD80B9 /* GenericTableViewController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -299,17 +311,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4A7B3721F4ADC000DD80B9 /* NetworkService.swift in Sources */,
+				3D4A7B4F21F626F300DD80B9 /* Constants.swift in Sources */,
 				3D4A7B3B21F4B06400DD80B9 /* BookingController.swift in Sources */,
+				3D4A7B4921F6181800DD80B9 /* GenericTableViewController.swift in Sources */,
 				3D4A7B4721F5EC9400DD80B9 /* VehicleDetailViewController.swift in Sources */,
 				3D4A7AF421F1E5C000DD80B9 /* Vehicle+Convenience.swift in Sources */,
 				3D4A7AF221F1E58800DD80B9 /* Vehicle.xcdatamodeld in Sources */,
 				3D4A7B0721F202BA00DD80B9 /* VehicleRepresentation.swift in Sources */,
 				3D4A7AB821F1DA8600DD80B9 /* AppDelegate.swift in Sources */,
 				3D4A7B3921F4AE2D00DD80B9 /* VehicleController.swift in Sources */,
+				3D4A7B4D21F620F300DD80B9 /* UIViewController+Containment.swift in Sources */,
 				3D4A7AF821F1EDBD00DD80B9 /* Booking+Convenience.swift in Sources */,
+				3D4A7B4B21F61B6F00DD80B9 /* UIView+AutoLayout.swift in Sources */,
 				3D4A7AF621F1E7A300DD80B9 /* CoreDataStack.swift in Sources */,
 				3D4A7AFC21F1F58D00DD80B9 /* NetworkDataLoader.swift in Sources */,
-				3D4A7B4521F5EC7B00DD80B9 /* VehiclesTableViewController.swift in Sources */,
+				3D4A7B4521F5EC7B00DD80B9 /* VehiclesViewController.swift in Sources */,
 				3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
