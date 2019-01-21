@@ -9,23 +9,28 @@
 import Foundation
 
 /**
- The model controller handling loading and saving data for vehicles.
+ The model controller for handling loading and saving data for vehicles.
  */
 
-class VehicleController: NetworkService {
+class VehicleController {
     
     // MARK: - Properties
-    let baseUrl = URL(string: "http://job-applicants-dummy-api.kupferwerk.net.s3.amazonaws.com/api/")!
+    let networkService: NetworkService
     
-    // MARK: - Public    
+    // MARK: - Init
+    init(networkService: NetworkService) {
+        self.networkService = networkService
+    }
+    
+    // MARK: - Public
     func load(completion: @escaping (Response<VehicleRepresentation>) -> ()) {
-        let url = self.url(with: baseUrl, pathComponents: ["cars"], pathExtension: "json")
-        fetch(from: url, completion: completion)
+        let url = networkService.url(pathComponents: ["cars"], pathExtension: "json")
+        networkService.fetch(from: url, completion: completion)
     }
     
     func loadDetail(for vehicleId: Int16, completion: @escaping (Response<VehicleRepresentation>) -> ()) {
-        let url = self.url(with: baseUrl, pathComponents: ["cars", String(vehicleId)], pathExtension: "json")
-        fetch(from: url, completion: completion)
+        let url = networkService.url(pathComponents: ["cars", String(vehicleId)], pathExtension: "json")
+        networkService.fetch(from: url, completion: completion)
     }
     
 }

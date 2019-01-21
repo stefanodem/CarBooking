@@ -38,21 +38,24 @@ class NetworkService {
     
     /// A network loader property that provides ability for independency injection.
     let networkLoader: NetworkDataLoader
+    let baseUrl: URL
+//    let baseUrl = URL(string: "http://job-applicants-dummy-api.kupferwerk.net.s3.amazonaws.com/api/")!
     
-    init(networkLoader: NetworkDataLoader = URLSession.shared) {
+    init(networkLoader: NetworkDataLoader = URLSession.shared, baseUrl: URL) {
         self.networkLoader = networkLoader
+        self.baseUrl = baseUrl
     }
     
     // MARK: - Generic network requests
     
-    func url(with baseUrl: URL, pathComponents: [String], pathExtension: String? = nil) -> URL {
+    func url(pathComponents: [String], pathExtension: String? = nil) -> URL {
         var url = baseUrl
         pathComponents.forEach { url.appendPathComponent($0) }
         if let pathExtension = pathExtension { url.appendPathExtension(pathExtension) }
         return url
     }
     
-    func fetch<Resource: Codable>(from url: URL, using session: URLSession = URLSession.shared, completion: @escaping ((Response<Resource>) -> ())) {
+    func fetch<Resource: Codable>(from url: URL, using session: URLSession = URLSession.shared, completion: @escaping (Response<Resource>) -> ()) {
         networkLoader.loadData(from: url) { (data, res, error) in
             
             if let error = error {
@@ -123,7 +126,7 @@ class NetworkService {
             }.resume()
     }
     
-    func post<Resource: Codable>(with url: URL, requestBody: Dictionary<String, Any>, using session: URLSession = URLSession.shared, completion: @escaping ((Response<Resource>) -> ())) {
+    func post<Resource: Codable>(with url: URL, requestBody: Dictionary<String, Any>, using session: URLSession = URLSession.shared, completion: @escaping (Response<Resource>) -> ()) {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
@@ -174,7 +177,7 @@ class NetworkService {
             }.resume()
     }
     
-    func delete(with url: URL, using session: URLSession = URLSession.shared, completion: @escaping ((Response<String>) -> ())) {
+    func delete(with url: URL, using session: URLSession = URLSession.shared, completion: @escaping (Response<String>) -> ()) {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethod.delete.rawValue

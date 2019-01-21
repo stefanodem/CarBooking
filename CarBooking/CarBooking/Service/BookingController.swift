@@ -9,13 +9,18 @@
 import Foundation
 
 /**
- The model controller handling loading and saving data for bookings.
+ The model controller for handling loading and saving data for bookings.
  */
 
-class BookingController: NetworkService {
+class BookingController {
     
     // MARK: - Properties
-    let baseUrl = URL(string: "http://job-applicants-dummy-api.kupferwerk.net.s3.amazonaws.com/api/")!
+    let networkService: NetworkService
+    
+    // MARK: - Init
+    init(networkService: NetworkService) {
+        self.networkService = networkService
+    }
     
     // MARK: - Public
     
@@ -28,13 +33,13 @@ class BookingController: NetworkService {
     
     // MARK: - Network requests
     private func fetch(completion: @escaping (Response<VehicleRepresentation>) -> ()) {
-        let url = self.url(with: baseUrl, pathComponents: ["bookings"], pathExtension: "json")
-        fetch(from: url, completion: completion)
+        let url = networkService.url(pathComponents: ["bookings"], pathExtension: "json")
+        networkService.fetch(from: url, completion: completion)
     }
     
     private func fetchDetail(for bookingId: Int16, completion: @escaping (Response<VehicleRepresentation>) -> ()) {
-        let url = self.url(with: baseUrl, pathComponents: ["bookings", String(bookingId)], pathExtension: "json")
-        fetch(from: url, completion: completion)
+        let url = networkService.url(pathComponents: ["bookings", String(bookingId)], pathExtension: "json")
+        networkService.fetch(from: url, completion: completion)
     }
     
 }

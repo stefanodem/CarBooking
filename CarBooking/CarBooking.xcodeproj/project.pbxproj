@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3D4A7AB821F1DA8600DD80B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AB721F1DA8600DD80B9 /* AppDelegate.swift */; };
-		3D4A7ABD21F1DA8600DD80B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7ABB21F1DA8600DD80B9 /* Main.storyboard */; };
 		3D4A7ABF21F1DA8700DD80B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */; };
 		3D4A7AC221F1DA8700DD80B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */; };
 		3D4A7AE621F1DEED00DD80B9 /* CarBookingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7AE521F1DEED00DD80B9 /* CarBookingTests.swift */; };
@@ -22,6 +21,8 @@
 		3D4A7B3721F4ADC000DD80B9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3621F4ADC000DD80B9 /* NetworkService.swift */; };
 		3D4A7B3921F4AE2D00DD80B9 /* VehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3821F4AE2D00DD80B9 /* VehicleController.swift */; };
 		3D4A7B3B21F4B06400DD80B9 /* BookingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B3A21F4B06400DD80B9 /* BookingController.swift */; };
+		3D4A7B4521F5EC7B00DD80B9 /* VehiclesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4421F5EC7B00DD80B9 /* VehiclesTableViewController.swift */; };
+		3D4A7B4721F5EC9400DD80B9 /* VehicleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4621F5EC9400DD80B9 /* VehicleDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 /* Begin PBXFileReference section */
 		3D4A7AB421F1DA8600DD80B9 /* CarBooking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarBooking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D4A7AB721F1DA8600DD80B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D4A7ABC21F1DA8600DD80B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D4A7AC121F1DA8700DD80B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D4A7AC321F1DA8700DD80B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +54,8 @@
 		3D4A7B3621F4ADC000DD80B9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3D4A7B3821F4AE2D00DD80B9 /* VehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleController.swift; sourceTree = "<group>"; };
 		3D4A7B3A21F4B06400DD80B9 /* BookingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingController.swift; sourceTree = "<group>"; };
+		3D4A7B4421F5EC7B00DD80B9 /* VehiclesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesTableViewController.swift; sourceTree = "<group>"; };
+		3D4A7B4621F5EC9400DD80B9 /* VehicleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				3D4A7AB721F1DA8600DD80B9 /* AppDelegate.swift */,
-				3D4A7ABB21F1DA8600DD80B9 /* Main.storyboard */,
 				3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */,
 				3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */,
 				3D4A7AC321F1DA8700DD80B9 /* Info.plist */,
@@ -120,8 +121,9 @@
 		3D4A7ACB21F1DCDE00DD80B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3D4A7AF921F1F4DD00DD80B9 /* Cars */,
+				3D4A7AF921F1F4DD00DD80B9 /* Vehicles */,
 				3D4A7AFA21F1F4EC00DD80B9 /* Bookings */,
+				3D4A7B3C21F4D4DC00DD80B9 /* Shared */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,11 +167,13 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		3D4A7AF921F1F4DD00DD80B9 /* Cars */ = {
+		3D4A7AF921F1F4DD00DD80B9 /* Vehicles */ = {
 			isa = PBXGroup;
 			children = (
+				3D4A7B4421F5EC7B00DD80B9 /* VehiclesTableViewController.swift */,
+				3D4A7B4621F5EC9400DD80B9 /* VehicleDetailViewController.swift */,
 			);
-			path = Cars;
+			path = Vehicles;
 			sourceTree = "<group>";
 		};
 		3D4A7AFA21F1F4EC00DD80B9 /* Bookings */ = {
@@ -185,6 +189,13 @@
 				3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		3D4A7B3C21F4D4DC00DD80B9 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +281,6 @@
 			files = (
 				3D4A7AC221F1DA8700DD80B9 /* LaunchScreen.storyboard in Resources */,
 				3D4A7ABF21F1DA8700DD80B9 /* Assets.xcassets in Resources */,
-				3D4A7ABD21F1DA8600DD80B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +300,7 @@
 			files = (
 				3D4A7B3721F4ADC000DD80B9 /* NetworkService.swift in Sources */,
 				3D4A7B3B21F4B06400DD80B9 /* BookingController.swift in Sources */,
+				3D4A7B4721F5EC9400DD80B9 /* VehicleDetailViewController.swift in Sources */,
 				3D4A7AF421F1E5C000DD80B9 /* Vehicle+Convenience.swift in Sources */,
 				3D4A7AF221F1E58800DD80B9 /* Vehicle.xcdatamodeld in Sources */,
 				3D4A7B0721F202BA00DD80B9 /* VehicleRepresentation.swift in Sources */,
@@ -298,6 +309,7 @@
 				3D4A7AF821F1EDBD00DD80B9 /* Booking+Convenience.swift in Sources */,
 				3D4A7AF621F1E7A300DD80B9 /* CoreDataStack.swift in Sources */,
 				3D4A7AFC21F1F58D00DD80B9 /* NetworkDataLoader.swift in Sources */,
+				3D4A7B4521F5EC7B00DD80B9 /* VehiclesTableViewController.swift in Sources */,
 				3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,14 +333,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3D4A7ABB21F1DA8600DD80B9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3D4A7ABC21F1DA8600DD80B9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
