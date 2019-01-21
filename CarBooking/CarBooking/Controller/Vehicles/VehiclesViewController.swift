@@ -8,10 +8,14 @@
 
 import UIKit
 
+/**
+ A table view which lists all vehicles available in the car pool.
+ */
+
 class VehiclesViewController: UIViewController {
 
     // MARK: - Properties
-    var detailViewController: VehicleDetailViewController? // TODO: Weak?
+    var detailViewController: VehicleDetailViewController?
     var tableViewController: GenericTableViewController<VehicleRepresentation, UITableViewCell>?
     let vehicleController: VehicleController
     var vehicles = [VehicleRepresentation]() {
@@ -21,7 +25,7 @@ class VehiclesViewController: UIViewController {
     }
     
     // MARK: - Init
-    init(frame: CGRect = CGRect.zero, vehicleController: VehicleController) {
+    init(vehicleController: VehicleController) {
         self.vehicleController = vehicleController
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,6 +58,7 @@ class VehiclesViewController: UIViewController {
         tableViewController = tableVC
     }
     
+    /// Fetches vehicles from the network.
     private func loadVehicles() {
         vehicleController.load(completion: { (response) in
             DispatchQueue.main.async {
@@ -69,13 +74,19 @@ class VehiclesViewController: UIViewController {
     }
     
     // MARK: - TableView
+    /// Handles selection of a vehicle and navigates to the detail view controller.
     private func handleSelectedCell(for vehicle: VehicleRepresentation) {
-        if let detailVC = detailViewController, let detailNavVC = detailVC.navigationController {
-            detailVC.view.backgroundColor = .red
-            splitViewController?.showDetailViewController(detailNavVC, sender: nil)
-        }
+        let detailVCs = VehicleDetailViewController(vehicleController: vehicleController, vehicle: vehicle)
+        splitViewController?.showDetailViewController(detailVCs, sender: nil)
+//        if let detailVC = detailViewController, let detailNavVC = detailVC.navigationController {
+//            let detailVC = VehicleDetailViewController()
+//            detailVC.vehicleDetails = vehicle
+//            detailVC.vehicleController = vehicleController
+//            splitViewController?.showDetailViewController(detailNavVC, sender: nil)
+//        }
     }
     
+    /// Handles configuration of cell.
     private func configureCell(_ cell: UITableViewCell, for vehicle: VehicleRepresentation) {
         cell.textLabel?.text = vehicle.name
     }

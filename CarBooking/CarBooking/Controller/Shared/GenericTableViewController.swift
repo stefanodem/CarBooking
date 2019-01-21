@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ A generic table view controller.
+ */
+
 class GenericTableViewController<Ressource, Cell: UITableViewCell>: UITableViewController {
     var items: [Ressource] {
         didSet {
