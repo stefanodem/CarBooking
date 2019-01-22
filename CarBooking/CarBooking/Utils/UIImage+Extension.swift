@@ -10,7 +10,9 @@ import UIKit
 
 extension UIImage {
     
-    static func download(from url: URL) -> UIImage? {
+    static func download(from url: URL?) -> UIImage? {
+        guard let url = url else { return nil }
+        
         do {
             let data = try Data(contentsOf: url)
             return UIImage(data: data)!

@@ -74,4 +74,11 @@ extension UIView {
         heightAnchor.constraint(equalToConstant: size.height).isActive = true
     }
     
+    func dropShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 7, height: 7)
+        self.layer.shadowRadius = 7
+    }
+    
 }

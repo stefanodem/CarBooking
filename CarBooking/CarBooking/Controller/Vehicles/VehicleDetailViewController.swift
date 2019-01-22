@@ -25,9 +25,17 @@ class VehicleDetailViewController: UIViewController {
     private var vehicleImageView : UIImageView = {
         let iv = UIImageView()
         iv.image = Constants.placeholderImage
+        iv.layer.cornerRadius = 10
+        iv.layer.masksToBounds = true
+        iv.layer.shadowColor = UIColor.black.cgColor
+        iv.layer.shadowOpacity = 0.5
+        iv.layer.shadowOffset = CGSize(width: -15, height: 15)
+        iv.layer.shadowRadius = 15
         
         return iv
     }()
+    
+    private var profileView: ProfileView!
     
     // MARK: - Init
     init(vehicleController: VehicleController, vehicle: VehicleRepresentation) {
@@ -49,22 +57,24 @@ class VehicleDetailViewController: UIViewController {
     
     // MARK: - Configuration
     private func setupViews() {
-        title = vehicleDetails.name
+        title = "Make a booking"
+        edgesForExtendedLayout = []
         view.backgroundColor = .white
-        view.addSubview(vehicleImageView)
-        vehicleImageView.anchor(top: view.topAnchor,
-                                leading: nil,
-                                bottom: nil,
-                                trailing: nil,
-                                padding: UIEdgeInsets(top: 30, left: 15, bottom: 15, right: 15))
-        vehicleImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        if let imagePath = vehicleDetails.image,
-            let url = URL(string: imagePath, relativeTo: Constants.vehicleBaseUrl),
-            let image = UIImage.download(from: url) {
-            vehicleImageView.image = image
-            vehicleImageView.setNeedsDisplay()
-        }
+        guard let imagePath = vehicleDetails.image,
+            let aDescription = vehicleDetails.descript else { return }
+        
+        // Setup profile view
+        let imageUrl = URL(string: imagePath, relativeTo: Constants.vehicleBaseUrl)
+        let image = UIImage.download(from: imageUrl)
+        profileView = ProfileView(image: image, title: vehicleDetails.name, description: aDescription)
+        view.addSubview(profileView)
+        profileView.anchor(top: view.topAnchor,
+                           leading: view.leadingAnchor,
+                           bottom: nil,
+                           trailing: view.trailingAnchor,
+                           padding: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
+        profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
     }
     
     private func updateViews() {
@@ -78,7 +88,7 @@ class VehicleDetailViewController: UIViewController {
                 switch response {
                 case .success(let vehicleDetails):
                     self.vehicleDetails = vehicleDetails
-                case .error(let error):
+                case .error(_):
                     break
                     // TODO: handle error
                 }

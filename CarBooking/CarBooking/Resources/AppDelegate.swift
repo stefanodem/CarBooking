@@ -22,30 +22,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let vehicleNetworkService = NetworkService(baseUrl: Constants.vehicleBaseUrl)
         let vehicleController = VehicleController(networkService: vehicleNetworkService)
         let vehiclesMainVC = VehiclesViewController(vehicleController: vehicleController)
-        let vehicleDetailVC = VehicleDetailViewController()
+        //let vehicleDetailVC = VehicleDetailViewController()
         let vehiclesMainNavVC = UINavigationController(rootViewController: vehiclesMainVC)
-        let vehicleDetailNavVC = UINavigationController(rootViewController: vehicleDetailVC)
+        //let vehicleDetailNavVC = UINavigationController(rootViewController: vehicleDetailVC)
         
-        vehicleSplitVC.viewControllers = [vehiclesMainNavVC, vehicleDetailNavVC]
+        vehicleSplitVC.viewControllers = [vehiclesMainNavVC]
         vehicleSplitVC.preferredDisplayMode = .allVisible
         vehicleSplitVC.delegate = self
         vehicleSplitVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        vehiclesMainVC.detailViewController = vehicleDetailVC
+        //vehiclesMainVC.detailViewController = vehicleDetailVC
         
         // Initializing booking controllers
         let bookingSplitVC =  UISplitViewController()
         let bookingNetworkService = NetworkService(baseUrl: Constants.vehicleBaseUrl)
         let bookingController = VehicleController(networkService: bookingNetworkService)
         let bookingsMainVC = VehiclesViewController(vehicleController: bookingController)
-        let bookingDetailVC = VehicleDetailViewController()
+        //let bookingDetailVC = VehicleDetailViewController()
         let bookingsMainNavVC = UINavigationController(rootViewController: bookingsMainVC)
-        let bookingDetailNavVC = UINavigationController(rootViewController: bookingDetailVC)
+        //let bookingDetailNavVC = UINavigationController(rootViewController: bookingDetailVC)
         
-        bookingSplitVC.viewControllers = [bookingsMainNavVC, bookingDetailNavVC]
+        bookingSplitVC.viewControllers = [bookingsMainNavVC]
         bookingSplitVC.preferredDisplayMode = .allVisible
         bookingSplitVC.delegate = self
         bookingSplitVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        bookingsMainVC.detailViewController = bookingDetailVC
+        //bookingsMainVC.detailViewController = bookingDetailVC
         
         tabBarController.viewControllers = [vehicleSplitVC, bookingSplitVC]
         
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         
         /// Checks if current detailVC has a vehicle, else push the primary VC onto the nav stack.
-        if detailVC.vehicle == nil {
+        if detailVC.vehicleDetails == nil {
             return true
         }
         

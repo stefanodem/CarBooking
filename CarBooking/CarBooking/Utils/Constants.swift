@@ -16,4 +16,10 @@ class Constants {
     // Images
     static let placeholderImage = UIImage(named: "imagePlaceholder")!
     
+    // UI
+    static let titleFontSize: CGFloat = 20
+    static let textFontSize: CGFloat = 14
+    static let defaultPadding: CGFloat = 17
+    static let defaultSpacing: CGFloat = 17
+    
 }
