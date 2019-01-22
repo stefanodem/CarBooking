@@ -29,6 +29,8 @@
 		3D4A7B4F21F626F300DD80B9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B4E21F626F300DD80B9 /* Constants.swift */; };
 		3D4A7B5121F66E8F00DD80B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B5021F66E8F00DD80B9 /* UIImage+Extension.swift */; };
 		3D4A7B5321F720B100DD80B9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B5221F720B100DD80B9 /* ProfileView.swift */; };
+		3D4A7B5521F74BF900DD80B9 /* PickerInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B5421F74BF900DD80B9 /* PickerInputField.swift */; };
+		3D4A7B5721F74C6700DD80B9 /* DateInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B5621F74C6700DD80B9 /* DateInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		3D4A7B4E21F626F300DD80B9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D4A7B5021F66E8F00DD80B9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		3D4A7B5221F720B100DD80B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		3D4A7B5421F74BF900DD80B9 /* PickerInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerInputField.swift; sourceTree = "<group>"; };
+		3D4A7B5621F74C6700DD80B9 /* DateInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				3D4A7B5221F720B100DD80B9 /* ProfileView.swift */,
+				3D4A7B5421F74BF900DD80B9 /* PickerInputField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				3D4A7B4821F6181800DD80B9 /* GenericTableViewController.swift */,
+				3D4A7B5621F74C6700DD80B9 /* DateInputViewController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 				3D4A7B4721F5EC9400DD80B9 /* VehicleDetailViewController.swift in Sources */,
 				3D4A7AF421F1E5C000DD80B9 /* Vehicle+Convenience.swift in Sources */,
 				3D4A7AF221F1E58800DD80B9 /* Vehicle.xcdatamodeld in Sources */,
+				3D4A7B5521F74BF900DD80B9 /* PickerInputField.swift in Sources */,
 				3D4A7B0721F202BA00DD80B9 /* VehicleRepresentation.swift in Sources */,
 				3D4A7AB821F1DA8600DD80B9 /* AppDelegate.swift in Sources */,
 				3D4A7B3921F4AE2D00DD80B9 /* VehicleController.swift in Sources */,
@@ -334,6 +341,7 @@
 				3D4A7AFC21F1F58D00DD80B9 /* NetworkDataLoader.swift in Sources */,
 				3D4A7B5321F720B100DD80B9 /* ProfileView.swift in Sources */,
 				3D4A7B4521F5EC7B00DD80B9 /* VehiclesViewController.swift in Sources */,
+				3D4A7B5721F74C6700DD80B9 /* DateInputViewController.swift in Sources */,
 				3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

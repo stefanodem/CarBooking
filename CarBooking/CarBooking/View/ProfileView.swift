@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ A profile view which consists of a title, an image, and a description.
+ */
+
 class ProfileView: UIView {
 
     // MARK: - Properties
@@ -41,11 +45,7 @@ class ProfileView: UIView {
     private func setupViews() {
         // Setup stack view
         addSubview(mainStackView)
-        mainStackView.anchor(top: topAnchor,
-                             leading: leadingAnchor,
-                             bottom: bottomAnchor,
-                             trailing: trailingAnchor,
-                             padding: UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30))
+        mainStackView.fillSuperview()
         
         // Setup description label
         let titleLabel = UILabel()

@@ -49,9 +49,7 @@ class VehiclesViewController: UIViewController {
     
     /// Sets up a table view for listing vehicles
     private func setupTableView() {
-        let tableVC = GenericTableViewController<VehicleRepresentation, UITableViewCell>(items: vehicles,
-                                                                                         configure: configureCell,
-                                                                                         selectedCellHandler: handleSelectedCell)
+        let tableVC = GenericTableViewController<VehicleRepresentation, UITableViewCell>(items: vehicles, configure: configureCell, selectedCellHandler: handleSelectedCell)
         // Adds the tableViewController as a child view controller
         add(tableVC)
         tableVC.tableView.fillSuperview()

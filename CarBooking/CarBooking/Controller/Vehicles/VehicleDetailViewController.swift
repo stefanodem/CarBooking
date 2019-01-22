@@ -21,21 +21,10 @@ class VehicleDetailViewController: UIViewController {
         }
     }
     let vehicleController: VehicleController
-    
-    private var vehicleImageView : UIImageView = {
-        let iv = UIImageView()
-        iv.image = Constants.placeholderImage
-        iv.layer.cornerRadius = 10
-        iv.layer.masksToBounds = true
-        iv.layer.shadowColor = UIColor.black.cgColor
-        iv.layer.shadowOpacity = 0.5
-        iv.layer.shadowOffset = CGSize(width: -15, height: 15)
-        iv.layer.shadowRadius = 15
         
-        return iv
-    }()
-    
     private var profileView: ProfileView!
+    private let dateInputVC = DateInputViewController()
+    private var padding = Constants.defaultPadding
     
     // MARK: - Init
     init(vehicleController: VehicleController, vehicle: VehicleRepresentation) {
@@ -73,12 +62,18 @@ class VehicleDetailViewController: UIViewController {
                            leading: view.leadingAnchor,
                            bottom: nil,
                            trailing: view.trailingAnchor,
-                           padding: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
+                           padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
         profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
-    }
-    
-    private func updateViews() {
         
+        // Setup date input view
+        add(dateInputVC)
+        view.addSubview(dateInputVC.view)
+        dateInputVC.view.anchor(top: profileView.bottomAnchor,
+                                leading: view.leadingAnchor,
+                                bottom: nil,
+                                trailing: view.trailingAnchor,
+                                padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
+        dateInputVC.view.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     /// Fetches vehicle details from the network.
