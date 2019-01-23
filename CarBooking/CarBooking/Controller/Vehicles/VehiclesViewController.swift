@@ -15,8 +15,13 @@ import UIKit
 class VehiclesViewController: UIViewController {
 
     // MARK: - Properties
+    /// A table view controller for listing vehicles in the car pool.
     var tableViewController: GenericTableViewController<VehicleRepresentation, GenericTableViewCell>?
+    /// A controller that handles loading vehicles from network.
     let vehicleController: VehicleController
+    /// A controller that handles loading and saving bookings.
+    let bookingController: BookingController
+    /// Vehicles to be displayed in table view.
     var vehicles = [VehicleRepresentation]() {
         didSet {
             tableViewController?.items = vehicles
@@ -24,8 +29,9 @@ class VehiclesViewController: UIViewController {
     }
     
     // MARK: - Init
-    init(vehicleController: VehicleController) {
+    init(vehicleController: VehicleController, bookingController: BookingController) {
         self.vehicleController = vehicleController
+        self.bookingController = bookingController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -76,7 +82,7 @@ class VehiclesViewController: UIViewController {
     // MARK: - TableViewController
     /// Handles selection of a vehicle and navigates to the detail view controller.
     private func handleSelectedCell(for vehicle: VehicleRepresentation) {
-        let detailVCs = VehicleDetailViewController(vehicleController: vehicleController, vehicle: vehicle)
+        let detailVCs = VehicleDetailViewController(vehicleController: vehicleController, vehicle: vehicle, bookingController: bookingController)
         splitViewController?.showDetailViewController(detailVCs, sender: nil)
     }
     

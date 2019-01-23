@@ -15,8 +15,11 @@ import UIKit
 class BookingViewController: UIViewController {
     
     // MARK: - Properties
+    /// A table view controller for listing vehicles in the car pool.
     var tableViewController: GenericTableViewController<Booking, GenericTableViewCell>?
+    /// A controller that handles loading and saving bookings.
     let bookingController: BookingController
+    /// Bookings by the user 
     var bookings = [Booking]() {
         didSet {
             tableViewController?.items = bookings
@@ -86,7 +89,7 @@ class BookingViewController: UIViewController {
         }
         
         let vehicleRep = VehicleRepresentation(identifier: vehicle.identifier, name: vehicle.name ?? "", shortDescript: vehicle.shortDescript, descript: vehicle.descript, image: vehicle.image)
-        let detailVCs = VehicleDetailViewController(vehicle: vehicleRep)
+        let detailVCs = VehicleDetailViewController(vehicle: vehicleRep, bookingController: bookingController)
         splitViewController?.showDetailViewController(detailVCs, sender: nil)
     }
     
@@ -103,6 +106,7 @@ class BookingViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    /// Formats a date to a localized date string.
     private func formatToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium

@@ -15,6 +15,7 @@ import Foundation
 class VehicleController {
     
     // MARK: - Properties
+    /// A generic network service that handles http requests.
     let networkService: NetworkService
     
     // MARK: - Init
@@ -23,11 +24,13 @@ class VehicleController {
     }
     
     // MARK: - Public
+    /// Loads vehicles from the network.
     func load(completion: @escaping (Response<[VehicleRepresentation]>) -> ()) {
         let url = networkService.url(pathComponents: ["cars"], pathExtension: "json")
         networkService.fetch(from: url, completion: completion)
     }
     
+    /// Loads vehicle details from the network.
     func loadDetail(for vehicleId: Int16, completion: @escaping (Response<VehicleRepresentation>) -> ()) {
         let url = networkService.url(pathComponents: ["cars", String(vehicleId)], pathExtension: "json")
         networkService.fetch(from: url, completion: completion)

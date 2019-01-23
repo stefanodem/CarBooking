@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ An appearance enum that stores UI default information.
+ */
+
 enum Appearance {
     
     static let primary = UIColor.rgb(red: 172, green: 207, blue: 204)

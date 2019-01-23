@@ -38,6 +38,7 @@
 		3DB79CF921F899C000904A82 /* GenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CF821F899C000904A82 /* GenericTableViewCell.swift */; };
 		3DB79CFB21F8B50300904A82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB79CFA21F8B50300904A82 /* Localizable.strings */; };
 		3DB79CFD21F8BA7900904A82 /* TestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CFC21F8BA7900904A82 /* TestJSON.swift */; };
+		3DB79CFF21F8C70300904A82 /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CFE21F8C70300904A82 /* MockJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		3DB79CF821F899C000904A82 /* GenericTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell.swift; sourceTree = "<group>"; };
 		3DB79CFA21F8B50300904A82 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		3DB79CFC21F8BA7900904A82 /* TestJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJSON.swift; sourceTree = "<group>"; };
+		3DB79CFE21F8C70300904A82 /* MockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */,
 				3D4A7AC321F1DA8700DD80B9 /* Info.plist */,
 				3DB79CFA21F8B50300904A82 /* Localizable.strings */,
+				3DB79CFE21F8C70300904A82 /* MockJSON.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				3D4A7B3921F4AE2D00DD80B9 /* VehicleController.swift in Sources */,
 				3D4A7B4D21F620F300DD80B9 /* UIViewController+Containment.swift in Sources */,
 				3DB79CF721F899A800904A82 /* BookingViewController.swift in Sources */,
+				3DB79CFF21F8C70300904A82 /* MockJSON.swift in Sources */,
 				3D4A7AF821F1EDBD00DD80B9 /* Booking+Convenience.swift in Sources */,
 				3D4A7B5121F66E8F00DD80B9 /* UIImage+Extension.swift in Sources */,
 				3D4A7B5C21F879F400DD80B9 /* BookingRepresentation.swift in Sources */,

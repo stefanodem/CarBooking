@@ -16,6 +16,7 @@ import CoreData
 class BookingController {
     
     // MARK: - Properties
+    /// A generic network service that handles http requests.
     let networkService: NetworkService
     
     // MARK: - Init
@@ -24,9 +25,10 @@ class BookingController {
     }
     
     // MARK: - Public
-    /// Loads all bookings from the network and syncs with the lcoal persistence store.
+    /// Loads all bookings from the network and syncs with the local persistence store.
     func load(completion: @escaping (Response<[Booking]>) -> ()) {
         // Fetch bookings from network
+        // TODO: Hook up to web server and then synchronize with local store.
         // Synchronize bookings with local persistence store
         let bookings = load()
         completion(Response.success(bookings))
@@ -48,11 +50,13 @@ class BookingController {
     }
     
     // MARK: - Network requests
+    /// Loads bookings to network. Note: this is currently mocked via a mock loader passed in as the network service.
     private func load(completion: @escaping (Response<[BookingRepresentation]>) -> ()) {
         let url = networkService.url(pathComponents: ["bookings"], pathExtension: "json")
         networkService.fetch(from: url, completion: completion)
     }
     
+    /// Posts booking to network. Note: this is currently mocked via a mock loader passed in as the network service.
     private func post(from startDate: Date, to endDate: Date, completion: @escaping (Response<Int>) -> ()) {
         let url = networkService.url(pathComponents: ["bookings"], pathExtension: "json")
         let reqBody = ["startDate": startDate.timeIntervalSince1970, "endDate": endDate.timeIntervalSince1970]
@@ -60,6 +64,7 @@ class BookingController {
     }
     
     // MARK: - Local persistence
+    /// Saves booking to local persistence.
     private func save(_ vehicleRep: VehicleRepresentation, from startDate: Date, to endDate: Date) throws {
         var error: Error?
         let context = CoreDataStack.shared.mainContext
@@ -81,6 +86,7 @@ class BookingController {
         if let error = error { throw error }
     }
     
+    /// Loads bookings from local persistence.
     private func load(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> [Booking] {
         var bookings = [Booking]()
         

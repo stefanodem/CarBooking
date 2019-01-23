@@ -23,11 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let tabBarController = UITabBarController()
         
+        // Setup mockServices for booking controllers
+        
         // Initializing vehicle controllers
         let vehicleSplitVC =  UISplitViewController()
+        // Setup a mocking loader for booking controller.
+        let mockLoader = MockLoader(data: mockJSON, error: nil)
+        let bookingMockService = NetworkService(networkLoader: mockLoader, baseUrl: Constants.bookingBaseUrl)
+        let bookingMockController = BookingController(networkService: bookingMockService)
+        // Setup vehicle controller.
         let vehicleNetworkService = NetworkService(baseUrl: Constants.vehicleBaseUrl)
         let vehicleController = VehicleController(networkService: vehicleNetworkService)
-        let vehiclesMainVC = VehiclesViewController(vehicleController: vehicleController)
+        // Setup vehicle view controllerand inject booking & vehicle controller.
+        let vehiclesMainVC = VehiclesViewController(vehicleController: vehicleController, bookingController: bookingMockController)
         let vehiclesMainNavVC = UINavigationController(rootViewController: vehiclesMainVC)
         
         vehicleSplitVC.viewControllers = [vehiclesMainNavVC]
@@ -38,8 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         // Initializing booking controllers
         let bookingSplitVC =  UISplitViewController()
+        // Setup booking controller.
         let bookingNetworkService = NetworkService(baseUrl: Constants.bookingBaseUrl)
         let bookingController = BookingController(networkService: bookingNetworkService)
+        // Setup booking view controller and inject booking controller.
         let bookingsMainVC = BookingViewController(bookingController: bookingController)
         let bookingsMainNavVC = UINavigationController(rootViewController: bookingsMainVC)
         
@@ -60,17 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,
                              onto primaryViewController: UIViewController) -> Bool {
-        guard let detailNavVC = secondaryViewController as? UINavigationController,
-            let detailVC = detailNavVC.topViewController as? VehicleDetailViewController else {
-            return false
-        }
-        
-        /// Checks if current detailVC has a vehicle, else push the primary VC onto the nav stack.
-        if detailVC.vehicle == nil {
-            return true
-        }
-        
-        return false
+
+        return true
     }
 
 }

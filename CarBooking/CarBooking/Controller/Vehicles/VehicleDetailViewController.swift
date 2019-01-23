@@ -20,17 +20,24 @@ class VehicleDetailViewController: UIViewController {
             setupViews()
         }
     }
+    /// A controller that handles loading vehicles from network.
     let vehicleController: VehicleController?
+    /// A controller that handles loading and saving bookings.
     let bookingController: BookingController
+    /// The start date the user wishes to book a vehicle.
     var bookingStartDate: Date?
+    /// The end date the user wishes to book a vehicle.
     var bookingEndDate: Date?
+    /// A boolean indicating whether the vehicle has been booked.
     var hasBooked: Bool = false
     
+    /// A profile view for showing images and description 
     private var profileView: ProfileView!
     // TODO: Dependency injection instead of instatiating here:
     private let dateInputVC = DateInputViewController()
     private var padding = Constants.defaultPadding
     
+    /// Booking button that allows the user to confirm a booking.
     private var bookingButton: UIButton = {
         let button = UIButton(type: .system)
         let buttonTitle = NSLocalizedString("Book Now", comment: "A button title as a call to action for the user to book the vehicle.")
@@ -44,6 +51,7 @@ class VehicleDetailViewController: UIViewController {
         return button
     }()
     
+    /// A loader indicator.
     private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .whiteLarge)
         spinner.frame = CGRect(x: -20.0, y: 6.0, width: 10.0, height: 10.0)
@@ -52,18 +60,12 @@ class VehicleDetailViewController: UIViewController {
     }()
     
     // MARK: - Init
-    init(vehicleController: VehicleController? = nil, vehicle: VehicleRepresentation) {
+    init(vehicleController: VehicleController? = nil, vehicle: VehicleRepresentation, bookingController: BookingController) {
         self.vehicleController = vehicleController
+        self.bookingController = bookingController
         self.vehicle = vehicle
         // If no vehicle controller has been passed in it means we instantiated from BookingVC.
         if vehicleController == nil { hasBooked = true }
-        // TODO: Dependency injection instead of instatiating here:
-        // A mock loader for mocking saving of booking to the network
-        var mockResponse = 1
-        let mockResponseData = Data(bytes: &mockResponse, count: MemoryLayout.size(ofValue: mockResponse))
-        let mockLoader = MockLoader(data: mockResponseData, error: nil)
-        let mockService = NetworkService(networkLoader: mockLoader, baseUrl: Constants.bookingBaseUrl)
-        self.bookingController = BookingController(networkService: mockService)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -117,19 +119,21 @@ class VehicleDetailViewController: UIViewController {
         view.addSubview(bookingButton)
         bookingButton.addSubview(spinner)
         spinner.centerInSuperview(size: CGSize(width: 10, height: 10))
+        let bottomPadding = UIDevice.current.userInterfaceIdiom == .pad ? 80 : padding
         bookingButton.anchor(top: nil,
                              leading: view.leadingAnchor,
                              bottom: view.bottomAnchor,
                              trailing: view.trailingAnchor,
-                             padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
+                             padding: UIEdgeInsets(top: padding, left: padding, bottom: bottomPadding, right: padding))
         bookingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         updateViewsOnFinishedBooking()
     }
     
+    /// Updates the view when the vehicle has already been booked.
     private func updateViewsOnFinishedBooking() {
         guard hasBooked == true else { return }
-        
+        // Deactivate date inputs.
         dateInputVC.deactivateInput()
         bookingButton.backgroundColor = UIColor.correctGreen
         let buttonTitle = NSLocalizedString("Booked!", comment: "A button title indicating that the vehicle has been booked.")

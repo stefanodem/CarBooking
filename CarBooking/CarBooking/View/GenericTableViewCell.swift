@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ A generic table view cell showing a title and a subtitle.
+ */
+
 class GenericTableViewCell: UITableViewCell {
     
     struct CellContent {

@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ A date picker input field that allows the user to pick a date.
+ */
+
 class PickerInputField: UITextField {
     
     var leftImage: UIImage? {
