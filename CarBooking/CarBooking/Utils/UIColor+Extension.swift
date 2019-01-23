@@ -15,8 +15,8 @@ extension UIColor {
     }
     
     /// App colors
-    static let primary = UIColor.rgb(red: 172, green: 207, blue: 204)
-    static let secondary = UIColor.rgb(red: 89, green: 82, blue: 65)
-    static let accent = UIColor.rgb(red: 138, green: 9, blue: 23)
+    static let primary = Appearance.primary
+    static let secondary = Appearance.secondary
+    static let accent = Appearance.accent
 
 }
