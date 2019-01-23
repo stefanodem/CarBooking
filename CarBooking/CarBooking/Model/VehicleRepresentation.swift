@@ -20,6 +20,11 @@ struct VehicleRepresentation: Codable {
     let descript: String?
     let image: String?
     
+//    init(id: Int16, name: String, shortDescript: String, descript: String, image: String) {
+//        self.identifier = id
+//        self.name = name
+//    }
+    
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
         case name

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 /**
  The model controller for handling loading and saving data for bookings.
@@ -24,9 +25,12 @@ class BookingController {
     
     // MARK: - Public
     /// Loads all bookings from the network and syncs with the lcoal persistence store.
-    func load(completion: @escaping (Response<VehicleRepresentation>) -> ()) {
+    func load(completion: @escaping (Response<[Booking]>) -> ()) {
         // Fetch bookings from network
         // Synchronize bookings with local persistence store
+        let bookings = load()
+        completion(Response.success(bookings))
+        return
     }
     
     /// Saves a booking to local persistence and posts it to the web server.
@@ -56,14 +60,14 @@ class BookingController {
     }
     
     // MARK: - Local persistence
-    private func save(_ vehicle: VehicleRepresentation, from startDate: Date, to endDate: Date) throws {
+    private func save(_ vehicleRep: VehicleRepresentation, from startDate: Date, to endDate: Date) throws {
         var error: Error?
         let context = CoreDataStack.shared.mainContext
         context.perform {
             do {
                 // Instatiate Core Data model objects for booking and vehicle.
                 let booking = Booking(startDate: startDate, endDate: endDate)
-                let vehicle = Vehicle(vehicleRepresentation: vehicle, context: context)
+                let vehicle = Vehicle(vehicleRepresentation: vehicleRep, context: context)
                 // Add the vehicle that is associated with the booking.
                 booking.vehicle = vehicle
                 
@@ -75,6 +79,21 @@ class BookingController {
         }
         
         if let error = error { throw error }
+    }
+    
+    private func load(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) -> [Booking] {
+        var bookings = [Booking]()
+        
+        let fetchRequest = NSFetchRequest<Booking>(entityName: CoreDataEntities.Booking.rawValue)
+        context.performAndWait {
+            do {
+                bookings = try context.fetch(fetchRequest)
+            } catch {
+                NSLog("Error fetching movie from persistent store: \(error)")
+            }
+        }
+        
+        return bookings
     }
     
 }

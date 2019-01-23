@@ -25,12 +25,13 @@ extension Vehicle {
     }
     
     /// An convenience initializer that initializes a Vehicle model from a parsed JSON object.
-    convenience init?(vehicleRepresentation: VehicleRepresentation, context: NSManagedObjectContext) {
+    convenience init(vehicleRepresentation: VehicleRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(identifier: vehicleRepresentation.identifier,
                   name: vehicleRepresentation.name,
                   shortDescript: vehicleRepresentation.shortDescript,
                   descript: vehicleRepresentation.descript,
-                  image: vehicleRepresentation.image)
+                  image: vehicleRepresentation.image,
+                  context: context)
     }
     
 }

@@ -9,6 +9,10 @@
 import Foundation
 import CoreData
 
+enum CoreDataEntities: String {
+    case Vehicle, Booking
+}
+
 class CoreDataStack {
     
     static let shared = CoreDataStack()

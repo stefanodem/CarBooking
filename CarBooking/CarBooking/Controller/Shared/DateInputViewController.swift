@@ -86,6 +86,12 @@ class DateInputViewController: UIViewController {
         setupViews()
     }
     
+    // MARK: - Public
+    func deactivateInput() {
+        startDateInputField.isUserInteractionEnabled = false
+        endDateInputField.isUserInteractionEnabled = false
+    }
+    
     // MARK: - Configuration
     private func setupViews() {
         view.addSubview(mainStackView)

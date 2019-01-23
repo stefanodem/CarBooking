@@ -20,10 +20,11 @@ class VehicleDetailViewController: UIViewController {
             setupViews()
         }
     }
-    let vehicleController: VehicleController
+    let vehicleController: VehicleController?
     let bookingController: BookingController
     var bookingStartDate: Date?
     var bookingEndDate: Date?
+    var hasBooked: Bool = false
     
     private var profileView: ProfileView!
     // TODO: Dependency injection instead of instatiating here:
@@ -50,9 +51,11 @@ class VehicleDetailViewController: UIViewController {
     }()
     
     // MARK: - Init
-    init(vehicleController: VehicleController, vehicle: VehicleRepresentation) {
+    init(vehicleController: VehicleController? = nil, vehicle: VehicleRepresentation) {
         self.vehicleController = vehicleController
         self.vehicle = vehicle
+        // If no vehicle controller has been passed in it means we instantiated from BookingVC.
+        if vehicleController == nil { hasBooked = true }
         // TODO: Dependency injection instead of instatiating here:
         // A mock loader for mocking saving of booking to the network
         var mockResponse = 1
@@ -77,7 +80,7 @@ class VehicleDetailViewController: UIViewController {
     // MARK: - Configuration
     private func setupViews() {
         // Setup view controller
-        title = "Make a booking"
+        title = hasBooked ? "Your booking" : "Make a booking"
         edgesForExtendedLayout = []
         view.backgroundColor = UIColor.primary
         dateInputVC.delegate = self
@@ -117,19 +120,29 @@ class VehicleDetailViewController: UIViewController {
                              trailing: view.trailingAnchor,
                              padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
         bookingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        updateViewsOnFinishedBooking()
+    }
+    
+    private func updateViewsOnFinishedBooking() {
+        guard hasBooked == true else { return }
+        
+        dateInputVC.deactivateInput()
+        bookingButton.backgroundColor = UIColor.correctGreen
+        bookingButton.setTitle("Booked!", for: .normal)
+        bookingButton.isUserInteractionEnabled = false
     }
     
     // MARK: - Networking
     /// Fetches vehicle details from the network.
     private func loadDetails() {        
-        vehicleController.loadDetail(for: vehicle.identifier,completion: { (response) in
+        vehicleController?.loadDetail(for: vehicle.identifier,completion: { (response) in
             DispatchQueue.main.async {
                 switch response {
                 case .success(let vehicleDetails):
                     self.vehicle = vehicleDetails
                 case .error(_):
-                    break
-                    // TODO: handle error
+                    NSLog("Could not fetch vehicles")
                 }
             }
         })
@@ -174,6 +187,8 @@ class VehicleDetailViewController: UIViewController {
         UIView.animate(withDuration: 0.33) {
             self.spinner.alpha = 0.0
         }
+        hasBooked = true
+        updateViewsOnFinishedBooking()
     }
     
 }

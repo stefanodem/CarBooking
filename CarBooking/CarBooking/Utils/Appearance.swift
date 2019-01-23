@@ -13,6 +13,7 @@ enum Appearance {
     static let primary = UIColor.rgb(red: 172, green: 207, blue: 204)
     static let secondary = UIColor.rgb(red: 89, green: 82, blue: 65)
     static let accent = UIColor.rgb(red: 138, green: 9, blue: 23)
+    static let correctGreen = UIColor.rgb(red: 76, green: 185, blue: 68)
     
     static func setupNavigation() {
         UINavigationBar.appearance().tintColor = accent

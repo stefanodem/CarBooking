@@ -18,5 +18,6 @@ extension UIColor {
     static let primary = Appearance.primary
     static let secondary = Appearance.secondary
     static let accent = Appearance.accent
+    static let correctGreen = Appearance.correctGreen
 
 }

@@ -28,30 +28,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let vehicleNetworkService = NetworkService(baseUrl: Constants.vehicleBaseUrl)
         let vehicleController = VehicleController(networkService: vehicleNetworkService)
         let vehiclesMainVC = VehiclesViewController(vehicleController: vehicleController)
-        //let vehicleDetailVC = VehicleDetailViewController()
         let vehiclesMainNavVC = UINavigationController(rootViewController: vehiclesMainVC)
-        //let vehicleDetailNavVC = UINavigationController(rootViewController: vehicleDetailVC)
         
         vehicleSplitVC.viewControllers = [vehiclesMainNavVC]
         vehicleSplitVC.preferredDisplayMode = .allVisible
         vehicleSplitVC.delegate = self
         vehicleSplitVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        //vehiclesMainVC.detailViewController = vehicleDetailVC
         
         // Initializing booking controllers
         let bookingSplitVC =  UISplitViewController()
-        let bookingNetworkService = NetworkService(baseUrl: Constants.vehicleBaseUrl)
-        let bookingController = VehicleController(networkService: bookingNetworkService)
-        let bookingsMainVC = VehiclesViewController(vehicleController: bookingController)
-        //let bookingDetailVC = VehicleDetailViewController()
+        let bookingNetworkService = NetworkService(baseUrl: Constants.bookingBaseUrl)
+        let bookingController = BookingController(networkService: bookingNetworkService)
+        let bookingsMainVC = BookingViewController(bookingController: bookingController)
         let bookingsMainNavVC = UINavigationController(rootViewController: bookingsMainVC)
-        //let bookingDetailNavVC = UINavigationController(rootViewController: bookingDetailVC)
         
         bookingSplitVC.viewControllers = [bookingsMainNavVC]
         bookingSplitVC.preferredDisplayMode = .allVisible
         bookingSplitVC.delegate = self
         bookingSplitVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        //bookingsMainVC.detailViewController = bookingDetailVC
         
         tabBarController.viewControllers = [vehicleSplitVC, bookingSplitVC]
         
