@@ -43,7 +43,7 @@ class VehiclesViewController: UIViewController {
     
     // MARK: - Configuration
     private func setupViews() {
-        title = "Vehicles"
+        title = NSLocalizedString("Vehicles", comment: "A title for the list of vehicles.")
     }
     
     /// Sets up a table view for listing vehicles

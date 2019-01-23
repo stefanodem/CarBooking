@@ -47,7 +47,7 @@ class BookingViewController: UIViewController {
     
     // MARK: - Configuration
     private func setupViews() {
-        title = "Bookings"
+        title = NSLocalizedString("Bookings", comment: "A view title indicating a list of books.")
     }
     
     /// Sets up a table view for listing vehicles

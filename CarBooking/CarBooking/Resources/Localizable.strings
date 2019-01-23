@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  CarBooking
+
+  Created by De MicheliStefano on 23.01.19.
+  Copyright © 2019 De MicheliStefano. All rights reserved.
+*/
+
+"Vehicles" = "Vehicles";
+
+"Bookings" = "Bookings";
+"Search" = "Search";
+
+"Make a booking" = "Make a booking";
+"Your booking" = "Your booking";
+"Booked!" = "Booked!";
+"Book Now" = "Book Now";
+
+"Start date" = "Start date";
+"End date" = "End date";

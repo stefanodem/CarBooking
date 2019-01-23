@@ -67,14 +67,14 @@ class DateInputViewController: UIViewController {
     
     private var startDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Start date"
+        label.text = NSLocalizedString("Start date", comment: "An input title indicating a field to input a start date.")
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     
     private var endDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "End date"
+        label.text = NSLocalizedString("End date", comment: "An input title indicating a field to input a end date.")
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()

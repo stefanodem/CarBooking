@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         vehicleSplitVC.viewControllers = [vehiclesMainNavVC]
         vehicleSplitVC.preferredDisplayMode = .allVisible
         vehicleSplitVC.delegate = self
-        vehicleSplitVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        let vehicleTabBarTitle = NSLocalizedString("Search", comment: "A title describing the user's searching for vehicles to book.")
+        vehicleSplitVC.tabBarItem = UITabBarItem(title: vehicleTabBarTitle, image: UIImage(named: "search"), selectedImage: nil)
         
         // Initializing booking controllers
         let bookingSplitVC =  UISplitViewController()
@@ -45,7 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         bookingSplitVC.viewControllers = [bookingsMainNavVC]
         bookingSplitVC.preferredDisplayMode = .allVisible
         bookingSplitVC.delegate = self
-        bookingSplitVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        let bookingTabBarTitle = NSLocalizedString("Bookings", comment: "A title describing the user's booked vehicles.")
+        bookingSplitVC.tabBarItem = UITabBarItem(title: bookingTabBarTitle, image: UIImage(named: "car"), selectedImage: nil)
         
         tabBarController.viewControllers = [vehicleSplitVC, bookingSplitVC]
         

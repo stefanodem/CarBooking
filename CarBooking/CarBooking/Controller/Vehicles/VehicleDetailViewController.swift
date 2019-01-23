@@ -33,6 +33,7 @@ class VehicleDetailViewController: UIViewController {
     
     private var bookingButton: UIButton = {
         let button = UIButton(type: .system)
+        let buttonTitle = NSLocalizedString("Book Now", comment: "A button title as a call to action for the user to book the vehicle.")
         button.setTitle("Book Now", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
         button.layer.cornerRadius = 25
@@ -80,7 +81,9 @@ class VehicleDetailViewController: UIViewController {
     // MARK: - Configuration
     private func setupViews() {
         // Setup view controller
-        title = hasBooked ? "Your booking" : "Make a booking"
+        title = hasBooked
+            ? NSLocalizedString("Your booking", comment: "A title that indicates that the detail view is a booked vehicle.")
+            : NSLocalizedString("Make a booking", comment: "A call for action for the user to book a vehicle.")
         edgesForExtendedLayout = []
         view.backgroundColor = UIColor.primary
         dateInputVC.delegate = self
@@ -129,7 +132,8 @@ class VehicleDetailViewController: UIViewController {
         
         dateInputVC.deactivateInput()
         bookingButton.backgroundColor = UIColor.correctGreen
-        bookingButton.setTitle("Booked!", for: .normal)
+        let buttonTitle = NSLocalizedString("Booked!", comment: "A button title indicating that the vehicle has been booked.")
+        bookingButton.setTitle(buttonTitle, for: .normal)
         bookingButton.isUserInteractionEnabled = false
     }
     
