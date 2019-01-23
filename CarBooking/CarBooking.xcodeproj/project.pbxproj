@@ -39,6 +39,7 @@
 		3DB79CFB21F8B50300904A82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB79CFA21F8B50300904A82 /* Localizable.strings */; };
 		3DB79CFD21F8BA7900904A82 /* TestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CFC21F8BA7900904A82 /* TestJSON.swift */; };
 		3DB79CFF21F8C70300904A82 /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CFE21F8C70300904A82 /* MockJSON.swift */; };
+		3DB79D0121F8D55B00904A82 /* LocalNotificationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79D0021F8D55B00904A82 /* LocalNotificationsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		3DB79CFA21F8B50300904A82 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		3DB79CFC21F8BA7900904A82 /* TestJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJSON.swift; sourceTree = "<group>"; };
 		3DB79CFE21F8C70300904A82 /* MockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
+		3DB79D0021F8D55B00904A82 /* LocalNotificationsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 			children = (
 				3D4A7B4E21F626F300DD80B9 /* Constants.swift */,
 				3D4A7B5D21F896DA00DD80B9 /* Appearance.swift */,
+				3DB79D0021F8D55B00904A82 /* LocalNotificationsHelper.swift */,
 				3D4A7B4A21F61B6F00DD80B9 /* UIView+AutoLayout.swift */,
 				3D4A7B5021F66E8F00DD80B9 /* UIImage+Extension.swift */,
 				3D4A7B3121F48F5100DD80B9 /* UIColor+Extension.swift */,
@@ -373,6 +376,7 @@
 				3D4A7B5321F720B100DD80B9 /* ProfileView.swift in Sources */,
 				3D4A7B4521F5EC7B00DD80B9 /* VehiclesViewController.swift in Sources */,
 				3D4A7B5721F74C6700DD80B9 /* DateInputViewController.swift in Sources */,
+				3DB79D0121F8D55B00904A82 /* LocalNotificationsHelper.swift in Sources */,
 				3D4A7B3221F48F5100DD80B9 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

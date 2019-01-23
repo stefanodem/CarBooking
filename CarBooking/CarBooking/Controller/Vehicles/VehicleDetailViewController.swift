@@ -35,6 +35,7 @@ class VehicleDetailViewController: UIViewController {
     private var profileView: ProfileView!
     // TODO: Dependency injection instead of instatiating here:
     private let dateInputVC = DateInputViewController()
+    private let notificationHelper = LocalNotificationHelper()
     private var padding = Constants.defaultPadding
     
     /// Booking button that allows the user to confirm a booking.
@@ -198,6 +199,9 @@ class VehicleDetailViewController: UIViewController {
         hasBooked = true
         updateViewsOnFinishedBooking()
     }
+    
+    // MARK: - Helper functions
+    
     
 }
 
