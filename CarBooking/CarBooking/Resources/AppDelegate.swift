@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         
         /// Checks if current detailVC has a vehicle, else push the primary VC onto the nav stack.
-        if detailVC.vehicleDetails == nil {
+        if detailVC.vehicle == nil {
             return true
         }
         

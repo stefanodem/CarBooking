@@ -108,7 +108,10 @@ class DateInputViewController: UIViewController {
         
         startDateInputField.text = formatToString(startDate)
         endDateInputField.text = formatToString(startDate)
-        endDateInputField.picker.minimumDate = startDate
+        endDateInputField.picker.minimumDate = minEndDate
+        
+        guard let endDate = minEndDate else { return }
+        delegate?.dateInput(self, didSelect: InputDates(startDate: startDate, endDate: endDate))
     }
     
     // MARK: - Date handlers

@@ -45,8 +45,7 @@ class NetworkService {
         self.baseUrl = baseUrl
     }
     
-    // MARK: - Generic network requests
-    
+    // MARK: - Generic network requests    
     func url(pathComponents: [String], pathExtension: String? = nil) -> URL {
         var url = baseUrl
         pathComponents.forEach { url.appendPathComponent($0) }
@@ -143,7 +142,7 @@ class NetworkService {
             return
         }
         
-        URLSession.shared.dataTask(with: urlRequest) { (data, res, error) in
+        networkLoader.loadData(from: urlRequest) { (data, res, error) in
             
             if let error = error {
                 NSLog("Error with POST urlRequest: \(error)")
@@ -173,7 +172,7 @@ class NetworkService {
                 completion(Response.error(error))
                 return
             }
-            }.resume()
+        }
     }
     
     func delete(with url: URL, using session: URLSession = URLSession.shared, completion: @escaping (Response<String>) -> ()) {

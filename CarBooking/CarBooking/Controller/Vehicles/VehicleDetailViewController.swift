@@ -15,14 +15,16 @@ import UIKit
 class VehicleDetailViewController: UIViewController {
     
     // MARK: - Properties
-    var vehicleDetails: VehicleRepresentation {
+    var vehicle: VehicleRepresentation {
         didSet {
             setupViews()
         }
     }
     let vehicleController: VehicleController
     let bookingController: BookingController
-        
+    var bookingStartDate: Date?
+    var bookingEndDate: Date?
+    
     private var profileView: ProfileView!
     private let dateInputVC = DateInputViewController()
     private var padding = Constants.defaultPadding
@@ -49,7 +51,7 @@ class VehicleDetailViewController: UIViewController {
     // MARK: - Init
     init(vehicleController: VehicleController, vehicle: VehicleRepresentation) {
         self.vehicleController = vehicleController
-        self.vehicleDetails = vehicle
+        self.vehicle = vehicle
         // TODO: Dependency injection instead of instatiating here:
         // A mock loader for mocking saving of booking to the network
         var mockResponse = 1
@@ -73,17 +75,19 @@ class VehicleDetailViewController: UIViewController {
     
     // MARK: - Configuration
     private func setupViews() {
+        // Setup view controller
         title = "Make a booking"
         edgesForExtendedLayout = []
         view.backgroundColor = UIColor.primary
+        dateInputVC.delegate = self
         
-        guard let imagePath = vehicleDetails.image else { return }
+        guard let imagePath = vehicle.image else { return }
         
         // Setup profile view
-        let aDescription = (UIDevice.current.userInterfaceIdiom == .pad ? vehicleDetails.descript : vehicleDetails.shortDescript) ?? ""
+        let aDescription = (UIDevice.current.userInterfaceIdiom == .pad ? vehicle.descript : vehicle.shortDescript) ?? ""
         let imageUrl = URL(string: imagePath, relativeTo: Constants.vehicleBaseUrl)
         let image = UIImage.download(from: imageUrl)
-        profileView = ProfileView(image: image, title: vehicleDetails.name, description: aDescription)
+        profileView = ProfileView(image: image, title: vehicle.name, description: aDescription)
         view.addSubview(profileView)
         profileView.anchor(top: view.topAnchor,
                            leading: view.leadingAnchor,
@@ -117,11 +121,11 @@ class VehicleDetailViewController: UIViewController {
     // MARK: - Networking
     /// Fetches vehicle details from the network.
     private func loadDetails() {        
-        vehicleController.loadDetail(for: vehicleDetails.identifier,completion: { (response) in
+        vehicleController.loadDetail(for: vehicle.identifier,completion: { (response) in
             DispatchQueue.main.async {
                 switch response {
                 case .success(let vehicleDetails):
-                    self.vehicleDetails = vehicleDetails
+                    self.vehicle = vehicleDetails
                 case .error(_):
                     break
                     // TODO: handle error
@@ -130,8 +134,9 @@ class VehicleDetailViewController: UIViewController {
         })
     }
     
-    private func saveBooking(from startDate: Date, to endDate: Date) {
-        bookingController.save(from: startDate, to: endDate, completion: { (response) in
+    /// Saves a booking to local persistence and to the network.
+    private func book(_ vehicle: VehicleRepresentation, from startDate: Date, to endDate: Date) {
+        bookingController.book(vehicle, from: startDate, to: endDate, completion: { (response) in
             DispatchQueue.main.async {
                 switch response {
                 case .success(_):
@@ -145,9 +150,15 @@ class VehicleDetailViewController: UIViewController {
     }
     
     // MARK: - User actions
+    /// Saves a booking and shows a spinner animation.
     @objc private func handleBooking() {
-//        let startDate = startDate
-//        saveBooking(from: <#T##Date#>, to: <#T##Date#>)
+        guard let startDate = bookingStartDate, let endDate = bookingEndDate else {
+            NSLog("No start or end dates picked")
+            return
+        }
+        
+        book(vehicle, from: startDate, to: endDate)
+        
         spinner.startAnimating()
         self.bookingButton.setTitleColor(UIColor.clear, for: .normal)
         UIView.animate(withDuration: 0.33) {
@@ -155,12 +166,24 @@ class VehicleDetailViewController: UIViewController {
         }
     }
     
+    /// Reverses the spinning animation upon completion of saving the booking.
     private func bookingDidFinish() {
         spinner.stopAnimating()
-        self.bookingButton.setTitleColor(UIColor.clear, for: .normal)
+        self.bookingButton.setTitleColor(.white, for: .normal)
         UIView.animate(withDuration: 0.33) {
             self.spinner.alpha = 0.0
         }
+    }
+    
+}
+
+// MARK: - DateInputVCDelegate
+extension VehicleDetailViewController: DateInputDelegate {
+    
+    /// Updates start and end dates whenever a user picks a new date.
+    func dateInput(_ dateInput: DateInputViewController, didSelect dates: DateInputViewController.InputDates) {
+        bookingStartDate = dates.startDate
+        bookingEndDate = dates.endDate
     }
     
 }

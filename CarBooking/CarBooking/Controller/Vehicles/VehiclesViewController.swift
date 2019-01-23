@@ -56,6 +56,7 @@ class VehiclesViewController: UIViewController {
         tableViewController = tableVC
     }
     
+    // MARK: - Networking
     /// Fetches vehicles from the network.
     private func loadVehicles() {
         vehicleController.load(completion: { (response) in
