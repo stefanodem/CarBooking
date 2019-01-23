@@ -36,6 +36,8 @@
 		3D4A7B5E21F896DA00DD80B9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A7B5D21F896DA00DD80B9 /* Appearance.swift */; };
 		3DB79CF721F899A800904A82 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CF621F899A800904A82 /* BookingViewController.swift */; };
 		3DB79CF921F899C000904A82 /* GenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CF821F899C000904A82 /* GenericTableViewCell.swift */; };
+		3DB79CFB21F8B50300904A82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DB79CFA21F8B50300904A82 /* Localizable.strings */; };
+		3DB79CFD21F8BA7900904A82 /* TestJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB79CFC21F8BA7900904A82 /* TestJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		3D4A7B5D21F896DA00DD80B9 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		3DB79CF621F899A800904A82 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		3DB79CF821F899C000904A82 /* GenericTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell.swift; sourceTree = "<group>"; };
+		3DB79CFA21F8B50300904A82 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		3DB79CFC21F8BA7900904A82 /* TestJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,7 @@
 				3D4A7ABE21F1DA8700DD80B9 /* Assets.xcassets */,
 				3D4A7AC021F1DA8700DD80B9 /* LaunchScreen.storyboard */,
 				3D4A7AC321F1DA8700DD80B9 /* Info.plist */,
+				3DB79CFA21F8B50300904A82 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			children = (
 				3D4A7AE521F1DEED00DD80B9 /* CarBookingTests.swift */,
 				3D4A7AE721F1DEED00DD80B9 /* Info.plist */,
+				3DB79CFC21F8BA7900904A82 /* TestJSON.swift */,
 			);
 			path = CarBookingTests;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4A7AC221F1DA8700DD80B9 /* LaunchScreen.storyboard in Resources */,
+				3DB79CFB21F8B50300904A82 /* Localizable.strings in Resources */,
 				3D4A7ABF21F1DA8700DD80B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D4A7AE621F1DEED00DD80B9 /* CarBookingTests.swift in Sources */,
+				3DB79CFD21F8BA7900904A82 /* TestJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

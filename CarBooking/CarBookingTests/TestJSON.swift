@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+let validVehicleJSON = """
+[
+  {
+    "id" : 3,
+    "name" : "Batmobile",
+    "shortDescription" : "A car to be picked up in the Batcave."
+  }
+]
+""".data(using: .utf8)!

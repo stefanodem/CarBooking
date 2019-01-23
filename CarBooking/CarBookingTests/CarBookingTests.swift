@@ -7,27 +7,49 @@
 //
 
 import XCTest
+@testable import CarBooking
 
 class CarBookingTests: XCTestCase {
+    
+    var testLoader: NetworkDataLoader!
+    var dateInputController: DateInputViewController!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        testLoader = MockLoader(data: validVehicleJSON, error: nil)
+        dateInputController = DateInputViewController()
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testValidVehicleData() {
+        let networkService = NetworkService(networkLoader: testLoader, baseUrl: Constants.vehicleBaseUrl)
+        let vehicleController = VehicleController(networkService: networkService)
+        
+        let expectation = self.expectation(description: "Perform vehicle fetch")
+        
+        vehicleController.load { (response) in
+            XCTAssertNotNil(Constants.vehicleBaseUrl)
+            
+            switch response {
+            case .success(let vehicles):
+                XCTAssertNotNil(vehicles)
+                XCTAssertEqual(vehicles.count, 1)
+                XCTAssertEqual(vehicles[0].name, "Batmobile")
+            case .error(let error):
+                XCTAssertNil(error)
+            }
+            expectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+    
+    func testValidInputDates() {
+        let startDate = dateInputController.startDate
+        let endDate = dateInputController.minEndDate!
+        let expectedEndDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)!
+        let tomorrow9AM = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: startDate)!
+        XCTAssertGreaterThan(endDate, startDate)
+        XCTAssertEqual(endDate, expectedEndDate)
+        XCTAssertEqual(startDate, tomorrow9AM)
     }
 
 }
