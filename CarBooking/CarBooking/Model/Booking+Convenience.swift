@@ -15,7 +15,7 @@ import CoreData
 
 extension Booking {
     
-    convenience init(identifier: Int16, startDate: Date, endDate: Date, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(identifier: String = NSUUID().uuidString, startDate: Date, endDate: Date, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.identifier = identifier
         self.startDate = startDate
