@@ -78,7 +78,7 @@ class PickerInputField: UITextField {
             leftView = nil
         }
         
-        self.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+        self.backgroundColor = UIColor.init(white: 0.3, alpha: 0.5)
         self.layer.cornerRadius = 6
         self.layer.masksToBounds = true
     }

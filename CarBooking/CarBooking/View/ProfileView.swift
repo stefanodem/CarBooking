@@ -22,7 +22,7 @@ class ProfileView: UIView {
     private var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
         stackView.spacing = Constants.defaultSpacing
         return stackView
     }()
@@ -43,6 +43,15 @@ class ProfileView: UIView {
     
     // MARK: - Configuration
     private func setupViews() {
+        // Setup image view
+        let imageView = UIImageView()
+        mainStackView.addArrangedSubview(imageView)
+        
+        imageView.image = image
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+        imageView.contentMode = .scaleAspectFit
+        imageView.dropShadow()
+        
         // Setup stack view
         addSubview(mainStackView)
         mainStackView.fillSuperview()
@@ -58,23 +67,14 @@ class ProfileView: UIView {
         titleLabel.numberOfLines = 1
         titleLabel.adjustsFontSizeToFitWidth = true
         
-        // Setup image view
-        let imageView = UIImageView()
-        mainStackView.addArrangedSubview(imageView)
-        
-        imageView.image = image
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-        imageView.contentMode = .scaleAspectFit
-        imageView.dropShadow()
-        
         // Setup description label
         let descriptionTextView = UILabel()
         mainStackView.addArrangedSubview(descriptionTextView)
         
         descriptionTextView.text = aDescription
         descriptionTextView.numberOfLines = 5
-        //descriptionTextView.sizeToFit()
         descriptionTextView.font = UIFont.preferredFont(forTextStyle: .body)
+        descriptionTextView.textAlignment = .center
         descriptionTextView.adjustsFontForContentSizeCategory = true
         descriptionTextView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         

@@ -26,6 +26,18 @@ class VehicleDetailViewController: UIViewController {
     private let dateInputVC = DateInputViewController()
     private var padding = Constants.defaultPadding
     
+    private var bookingButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Book Now", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+        button.backgroundColor = UIColor.accent
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(handleBooking), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Init
     init(vehicleController: VehicleController, vehicle: VehicleRepresentation) {
         self.vehicleController = vehicleController
@@ -48,12 +60,12 @@ class VehicleDetailViewController: UIViewController {
     private func setupViews() {
         title = "Make a booking"
         edgesForExtendedLayout = []
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.primary
         
-        guard let imagePath = vehicleDetails.image,
-            let aDescription = vehicleDetails.descript else { return }
+        guard let imagePath = vehicleDetails.image else { return }
         
         // Setup profile view
+        let aDescription = (UIDevice.current.userInterfaceIdiom == .pad ? vehicleDetails.descript : vehicleDetails.shortDescript) ?? ""
         let imageUrl = URL(string: imagePath, relativeTo: Constants.vehicleBaseUrl)
         let image = UIImage.download(from: imageUrl)
         profileView = ProfileView(image: image, title: vehicleDetails.name, description: aDescription)
@@ -63,7 +75,7 @@ class VehicleDetailViewController: UIViewController {
                            bottom: nil,
                            trailing: view.trailingAnchor,
                            padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
-        profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        profileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65).isActive = true
         
         // Setup date input view
         add(dateInputVC)
@@ -73,7 +85,16 @@ class VehicleDetailViewController: UIViewController {
                                 bottom: nil,
                                 trailing: view.trailingAnchor,
                                 padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
-        dateInputVC.view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        dateInputVC.view.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        
+        // Setup booking button
+        view.addSubview(bookingButton)
+        bookingButton.anchor(top: nil,
+                             leading: view.leadingAnchor,
+                             bottom: view.bottomAnchor,
+                             trailing: view.trailingAnchor,
+                             padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
+        bookingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     /// Fetches vehicle details from the network.
@@ -89,6 +110,11 @@ class VehicleDetailViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    // MARK: - User actions
+    @objc private func handleBooking() {
+        print("booked")
     }
     
 }

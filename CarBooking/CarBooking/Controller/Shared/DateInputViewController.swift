@@ -34,13 +34,13 @@ class DateInputViewController: UIViewController {
         pf.picker.setDate(startDate, animated: false)
         pf.picker.datePickerMode = .dateAndTime
         pf.picker.locale = Locale(identifier: Locale.current.identifier)
+        pf.picker.addTarget(self, action: #selector(didChangeStartDate(picker:)), for: .valueChanged)
         pf.leftImage = UIImage(named: "timer")!
-        pf.tintColor = .red
-        pf.backgroundColor = .gray
+        pf.textColor = .white
         return pf
     }()
     
-    private let daysInputField: PickerInputField = {
+    private let endDateInputField: PickerInputField = {
         let pf = PickerInputField()
         pf.picker.datePickerMode = .date
         pf.picker.locale = Locale(identifier: Locale.current.identifier)
@@ -48,8 +48,22 @@ class DateInputViewController: UIViewController {
         pf.picker.maximumDate = maxDate
         pf.leftImage = UIImage(named: "clock")!
         pf.tintColor = .red
-        pf.backgroundColor = .gray
+        pf.textColor = .white
         return pf
+    }()
+    
+    private var startDateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Start date"
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
+    
+    private var endDateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "End date"
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
     }()
     
     // MARK: - Life Cycle
@@ -64,11 +78,24 @@ class DateInputViewController: UIViewController {
         view.addSubview(mainStackView)
         mainStackView.fillSuperview()
         
-        mainStackView.addArrangedSubview(startDateInputField)
-        mainStackView.addArrangedSubview(daysInputField)
+        let startDateStackView = UIStackView()
+        startDateStackView.axis = .vertical
+        startDateStackView.distribution = .fillProportionally
+        startDateStackView.addArrangedSubview(startDateLabel)
+        startDateStackView.addArrangedSubview(startDateInputField)
+        
+        let endDateStackView = UIStackView()
+        endDateStackView.axis = .vertical
+        endDateStackView.distribution = .fillProportionally
+        endDateStackView.addArrangedSubview(endDateLabel)
+        endDateStackView.addArrangedSubview(endDateInputField)
+        
+        mainStackView.addArrangedSubview(startDateStackView)
+        mainStackView.addArrangedSubview(endDateStackView)
         
         startDateInputField.text = formatToString(startDate)
-        daysInputField.text = formatToString(startDate)
+        endDateInputField.text = formatToString(startDate)
+        endDateInputField.picker.minimumDate = startDate
     }
     
     // MARK: - Date handlers
@@ -85,6 +112,16 @@ class DateInputViewController: UIViewController {
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: Locale.current.identifier)
         return dateFormatter.string(from: date)
+    }
+    
+    @objc private func didChangeStartDate(picker: UIDatePicker) {
+        let startDate = picker.date
+        endDateInputField.picker.minimumDate = startDate
+        endDateInputField.picker.maximumDate = Calendar.current.date(byAdding: .day, value: 7, to: startDate)
+        if startDate > endDateInputField.picker.date {
+            endDateInputField.picker.date = startDate
+            endDateInputField.text = formatToString(startDate)
+        }
     }
 
 }
