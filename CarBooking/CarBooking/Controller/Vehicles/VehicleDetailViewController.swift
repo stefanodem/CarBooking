@@ -26,6 +26,7 @@ class VehicleDetailViewController: UIViewController {
     var bookingEndDate: Date?
     
     private var profileView: ProfileView!
+    // TODO: Dependency injection instead of instatiating here:
     private let dateInputVC = DateInputViewController()
     private var padding = Constants.defaultPadding
     
