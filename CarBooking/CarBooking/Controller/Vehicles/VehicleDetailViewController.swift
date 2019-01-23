@@ -21,6 +21,7 @@ class VehicleDetailViewController: UIViewController {
         }
     }
     let vehicleController: VehicleController
+    let bookingController: BookingController
         
     private var profileView: ProfileView!
     private let dateInputVC = DateInputViewController()
@@ -38,10 +39,24 @@ class VehicleDetailViewController: UIViewController {
         return button
     }()
     
+    private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .whiteLarge)
+        spinner.frame = CGRect(x: -20.0, y: 6.0, width: 10.0, height: 10.0)
+        spinner.alpha = 0.0
+        return spinner
+    }()
+    
     // MARK: - Init
     init(vehicleController: VehicleController, vehicle: VehicleRepresentation) {
         self.vehicleController = vehicleController
         self.vehicleDetails = vehicle
+        // TODO: Dependency injection instead of instatiating here:
+        // A mock loader for mocking saving of booking to the network
+        var mockResponse = 1
+        let mockResponseData = Data(bytes: &mockResponse, count: MemoryLayout.size(ofValue: mockResponse))
+        let mockLoader = MockLoader(data: mockResponseData, error: nil)
+        let mockService = NetworkService(networkLoader: mockLoader, baseUrl: Constants.bookingBaseUrl)
+        self.bookingController = BookingController(networkService: mockService)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -89,6 +104,8 @@ class VehicleDetailViewController: UIViewController {
         
         // Setup booking button
         view.addSubview(bookingButton)
+        bookingButton.addSubview(spinner)
+        spinner.centerInSuperview(size: CGSize(width: 10, height: 10))
         bookingButton.anchor(top: nil,
                              leading: view.leadingAnchor,
                              bottom: view.bottomAnchor,
@@ -97,6 +114,7 @@ class VehicleDetailViewController: UIViewController {
         bookingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    // MARK: - Networking
     /// Fetches vehicle details from the network.
     private func loadDetails() {        
         vehicleController.loadDetail(for: vehicleDetails.identifier,completion: { (response) in
@@ -112,9 +130,37 @@ class VehicleDetailViewController: UIViewController {
         })
     }
     
+    private func saveBooking(from startDate: Date, to endDate: Date) {
+        bookingController.save(from: startDate, to: endDate, completion: { (response) in
+            DispatchQueue.main.async {
+                switch response {
+                case .success(_):
+                    self.bookingDidFinish()
+                case .error(let error):
+                    NSLog("Error saving booking: \(error)")
+                    self.bookingDidFinish()
+                }
+            }
+        })
+    }
+    
     // MARK: - User actions
     @objc private func handleBooking() {
-        print("booked")
+//        let startDate = startDate
+//        saveBooking(from: <#T##Date#>, to: <#T##Date#>)
+        spinner.startAnimating()
+        self.bookingButton.setTitleColor(UIColor.clear, for: .normal)
+        UIView.animate(withDuration: 0.33) {
+            self.spinner.alpha = 1.0
+        }
+    }
+    
+    private func bookingDidFinish() {
+        spinner.stopAnimating()
+        self.bookingButton.setTitleColor(UIColor.clear, for: .normal)
+        UIView.animate(withDuration: 0.33) {
+            self.spinner.alpha = 0.0
+        }
     }
     
 }

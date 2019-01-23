@@ -8,18 +8,31 @@
 
 import UIKit
 
+protocol DateInputDelegate: class {
+    func dateInput(_ dateInput: DateInputViewController, didSelect dates: DateInputViewController.InputDates)
+}
+
 /**
  A date input with two input fields which allows users to input start date and number of days.
  */
 
 class DateInputViewController: UIViewController {
     
-    enum InputTypes: String {
-        case startDate, days
+    struct InputDates {
+        let startDate: Date
+        let endDate: Date
     }
     
     // MARK: - Properties
+    weak var delegate: DateInputDelegate?
+    
     lazy var startDate: Date = defaultDate()
+    var minEndDate: Date? {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self.startDate)
+    }
+    var maxEndDate: Date? {
+        return Calendar.current.date(byAdding: .day, value: 7, to: startDate)
+    }
     
     private var mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -40,12 +53,12 @@ class DateInputViewController: UIViewController {
         return pf
     }()
     
-    private let endDateInputField: PickerInputField = {
+    private lazy var endDateInputField: PickerInputField = {
         let pf = PickerInputField()
         pf.picker.datePickerMode = .date
         pf.picker.locale = Locale(identifier: Locale.current.identifier)
-        let maxDate = Calendar.current.date(byAdding: .day, value: 7, to: Date())
-        pf.picker.maximumDate = maxDate
+        pf.picker.minimumDate = minEndDate
+        pf.picker.maximumDate = maxEndDate
         pf.leftImage = UIImage(named: "clock")!
         pf.tintColor = .red
         pf.textColor = .white
@@ -114,14 +127,17 @@ class DateInputViewController: UIViewController {
         return dateFormatter.string(from: date)
     }
     
+    // MARK: - User actions
     @objc private func didChangeStartDate(picker: UIDatePicker) {
-        let startDate = picker.date
-        endDateInputField.picker.minimumDate = startDate
-        endDateInputField.picker.maximumDate = Calendar.current.date(byAdding: .day, value: 7, to: startDate)
-        if startDate > endDateInputField.picker.date {
-            endDateInputField.picker.date = startDate
-            endDateInputField.text = formatToString(startDate)
+        startDate = picker.date
+        
+        if let minEndDate = minEndDate, let maxEndDate = maxEndDate {
+            endDateInputField.picker.minimumDate = minEndDate
+            endDateInputField.picker.maximumDate = maxEndDate
+            endDateInputField.text = formatToString(minEndDate)
+            
+            let inputDates = InputDates(startDate: startDate, endDate: minEndDate)
+            delegate?.dateInput(self, didSelect: inputDates)
         }
     }
-
 }
