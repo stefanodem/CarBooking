@@ -15,7 +15,7 @@ import UIKit
 class VehiclesViewController: UIViewController {
 
     // MARK: - Properties
-    var tableViewController: GenericTableViewController<VehicleRepresentation, UITableViewCell>?
+    var tableViewController: GenericTableViewController<VehicleRepresentation, GenericTableViewCell>?
     let vehicleController: VehicleController
     var vehicles = [VehicleRepresentation]() {
         didSet {
@@ -48,10 +48,13 @@ class VehiclesViewController: UIViewController {
     
     /// Sets up a table view for listing vehicles
     private func setupTableView() {
-        let tableVC = GenericTableViewController<VehicleRepresentation, UITableViewCell>(items: vehicles, configure: configureCell, selectedCellHandler: handleSelectedCell)
+        let tableVC = GenericTableViewController<VehicleRepresentation, GenericTableViewCell>(items: vehicles, configure: configureCell, selectedCellHandler: handleSelectedCell)
         // Adds the tableViewController as a child view controller
         add(tableVC)
         tableVC.tableView.fillSuperview()
+        tableVC.tableView.backgroundColor = UIColor.primary
+        tableVC.tableView.separatorColor = UIColor.accent
+        tableVC.tableView.tableFooterView = UIView()
         tableViewController = tableVC
     }
     
@@ -70,7 +73,7 @@ class VehiclesViewController: UIViewController {
         })
     }
     
-    // MARK: - TableView
+    // MARK: - TableViewController
     /// Handles selection of a vehicle and navigates to the detail view controller.
     private func handleSelectedCell(for vehicle: VehicleRepresentation) {
         let detailVCs = VehicleDetailViewController(vehicleController: vehicleController, vehicle: vehicle)
@@ -78,8 +81,11 @@ class VehiclesViewController: UIViewController {
     }
     
     /// Handles configuration of cell.
-    private func configureCell(_ cell: UITableViewCell, for vehicle: VehicleRepresentation) {
-        cell.textLabel?.text = vehicle.name
+    private func configureCell(_ cell: GenericTableViewCell, for vehicle: VehicleRepresentation) {
+        let name = vehicle.name
+        let shortDescript = vehicle.shortDescript ?? ""
+        let content = GenericTableViewCell.CellContent(title: name, detail: shortDescript)
+        cell.content = content
     }
     
 }
