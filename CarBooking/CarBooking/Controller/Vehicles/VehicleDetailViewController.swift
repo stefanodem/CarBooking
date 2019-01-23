@@ -151,7 +151,7 @@ class VehicleDetailViewController: UIViewController {
     }
     
     // MARK: - User actions
-    /// Saves a booking and shows a spinner animation.
+    /// Saves a booking and shows a loading animation.
     @objc private func handleBooking() {
         guard let startDate = bookingStartDate, let endDate = bookingEndDate else {
             NSLog("No start or end dates picked")
@@ -167,7 +167,7 @@ class VehicleDetailViewController: UIViewController {
         }
     }
     
-    /// Reverses the spinning animation upon completion of saving the booking.
+    /// Reverses the loading animation upon completion of saving the booking.
     private func bookingDidFinish() {
         spinner.stopAnimating()
         self.bookingButton.setTitleColor(.white, for: .normal)

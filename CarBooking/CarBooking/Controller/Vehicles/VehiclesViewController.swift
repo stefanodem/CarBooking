@@ -15,7 +15,6 @@ import UIKit
 class VehiclesViewController: UIViewController {
 
     // MARK: - Properties
-    var detailViewController: VehicleDetailViewController?
     var tableViewController: GenericTableViewController<VehicleRepresentation, UITableViewCell>?
     let vehicleController: VehicleController
     var vehicles = [VehicleRepresentation]() {
@@ -63,10 +62,9 @@ class VehiclesViewController: UIViewController {
             DispatchQueue.main.async {
                 switch response {
                 case .success(let vehicles):
-                    self.vehicles = vehicles
+                    self.vehicles = vehicles.sorted { $0.name < $1.name }
                 case .error(let error):
-                    break
-                    // TODO: handle error
+                    NSLog("Error while loading vehicles: \(error)")
                 }
             }
         })
@@ -77,12 +75,6 @@ class VehiclesViewController: UIViewController {
     private func handleSelectedCell(for vehicle: VehicleRepresentation) {
         let detailVCs = VehicleDetailViewController(vehicleController: vehicleController, vehicle: vehicle)
         splitViewController?.showDetailViewController(detailVCs, sender: nil)
-//        if let detailVC = detailViewController, let detailNavVC = detailVC.navigationController {
-//            let detailVC = VehicleDetailViewController()
-//            detailVC.vehicleDetails = vehicle
-//            detailVC.vehicleController = vehicleController
-//            splitViewController?.showDetailViewController(detailNavVC, sender: nil)
-//        }
     }
     
     /// Handles configuration of cell.
